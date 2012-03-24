@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15F8EF56151DAB2400C6CEBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF55151DAB2400C6CEBF /* UIKit.framework */; };
+		15F8EF58151DAB2400C6CEBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF57151DAB2400C6CEBF /* Foundation.framework */; };
+		15F8EF5A151DAB2400C6CEBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */; };
+		15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */; };
+		15F8EF82151DACD100C6CEBF /* CSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7F151DACD100C6CEBF /* CSViewController.m */; };
+		15F8EF83151DACD100C6CEBF /* CSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15F8EF80151DACD100C6CEBF /* CSViewController.xib */; };
+		15F8EF88151DACE100C6CEBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF86151DACE100C6CEBF /* main.m */; };
+		15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */; };
+		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15F8EF51151DAB2400C6CEBF /* CSLinearLayoutViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSLinearLayoutViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15F8EF55151DAB2400C6CEBF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		15F8EF57151DAB2400C6CEBF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		15F8EF7C151DACD100C6CEBF /* CSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAppDelegate.h; path = Classes/CSAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAppDelegate.m; path = Classes/CSAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		15F8EF7E151DACD100C6CEBF /* CSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSViewController.h; path = Classes/CSViewController.h; sourceTree = SOURCE_ROOT; };
+		15F8EF7F151DACD100C6CEBF /* CSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSViewController.m; path = Classes/CSViewController.m; sourceTree = SOURCE_ROOT; };
+		15F8EF80151DACD100C6CEBF /* CSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CSViewController.xib; path = Classes/CSViewController.xib; sourceTree = SOURCE_ROOT; };
+		15F8EF84151DACE100C6CEBF /* CSLinearLayoutViewDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "CSLinearLayoutViewDemo-Info.plist"; path = "Supporting/CSLinearLayoutViewDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		15F8EF85151DACE100C6CEBF /* CSLinearLayoutViewDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CSLinearLayoutViewDemo-Prefix.pch"; path = "Supporting/CSLinearLayoutViewDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		15F8EF86151DACE100C6CEBF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Supporting/main.m; sourceTree = SOURCE_ROOT; };
+		15F8EF8F151DAE5B00C6CEBF /* CSLinearLayoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLinearLayoutItem.h; path = ../CSLinearLayoutView/CSLinearLayoutItem.h; sourceTree = SOURCE_ROOT; };
+		15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutItem.m; path = ../CSLinearLayoutView/CSLinearLayoutItem.m; sourceTree = SOURCE_ROOT; };
+		15F8EF91151DAE5B00C6CEBF /* CSLinearLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLinearLayoutView.h; path = ../CSLinearLayoutView/CSLinearLayoutView.h; sourceTree = SOURCE_ROOT; };
+		15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutView.m; path = ../CSLinearLayoutView/CSLinearLayoutView.m; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15F8EF4E151DAB2400C6CEBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15F8EF56151DAB2400C6CEBF /* UIKit.framework in Frameworks */,
+				15F8EF58151DAB2400C6CEBF /* Foundation.framework in Frameworks */,
+				15F8EF5A151DAB2400C6CEBF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15F8EF46151DAB2400C6CEBF = {
+			isa = PBXGroup;
+			children = (
+				15F8EF72151DAB5700C6CEBF /* CSLinearLayoutView */,
+				15F8EF5B151DAB2400C6CEBF /* Demo */,
+				15F8EF54151DAB2400C6CEBF /* Frameworks */,
+				15F8EF52151DAB2400C6CEBF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15F8EF52151DAB2400C6CEBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EF51151DAB2400C6CEBF /* CSLinearLayoutViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15F8EF54151DAB2400C6CEBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EF55151DAB2400C6CEBF /* UIKit.framework */,
+				15F8EF57151DAB2400C6CEBF /* Foundation.framework */,
+				15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		15F8EF5B151DAB2400C6CEBF /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EF7C151DACD100C6CEBF /* CSAppDelegate.h */,
+				15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */,
+				15F8EF7E151DACD100C6CEBF /* CSViewController.h */,
+				15F8EF7F151DACD100C6CEBF /* CSViewController.m */,
+				15F8EF80151DACD100C6CEBF /* CSViewController.xib */,
+				15F8EF5C151DAB2400C6CEBF /* Supporting Files */,
+			);
+			name = Demo;
+			path = CSLinearLayoutViewDemo;
+			sourceTree = "<group>";
+		};
+		15F8EF5C151DAB2400C6CEBF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EF84151DACE100C6CEBF /* CSLinearLayoutViewDemo-Info.plist */,
+				15F8EF85151DACE100C6CEBF /* CSLinearLayoutViewDemo-Prefix.pch */,
+				15F8EF86151DACE100C6CEBF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15F8EF72151DAB5700C6CEBF /* CSLinearLayoutView */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EF91151DAE5B00C6CEBF /* CSLinearLayoutView.h */,
+				15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */,
+				15F8EF8F151DAE5B00C6CEBF /* CSLinearLayoutItem.h */,
+				15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */,
+			);
+			name = CSLinearLayoutView;
+			path = CSLinearLayoutViewDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15F8EF50151DAB2400C6CEBF /* CSLinearLayoutViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15F8EF6F151DAB2400C6CEBF /* Build configuration list for PBXNativeTarget "CSLinearLayoutViewDemo" */;
+			buildPhases = (
+				15F8EF4D151DAB2400C6CEBF /* Sources */,
+				15F8EF4E151DAB2400C6CEBF /* Frameworks */,
+				15F8EF4F151DAB2400C6CEBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CSLinearLayoutViewDemo;
+			productName = CSLinearLayoutViewDemo;
+			productReference = 15F8EF51151DAB2400C6CEBF /* CSLinearLayoutViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15F8EF48151DAB2400C6CEBF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Charles Scalesse";
+			};
+			buildConfigurationList = 15F8EF4B151DAB2400C6CEBF /* Build configuration list for PBXProject "CSLinearLayoutView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 15F8EF46151DAB2400C6CEBF;
+			productRefGroup = 15F8EF52151DAB2400C6CEBF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15F8EF50151DAB2400C6CEBF /* CSLinearLayoutViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15F8EF4F151DAB2400C6CEBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15F8EF83151DACD100C6CEBF /* CSViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15F8EF4D151DAB2400C6CEBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */,
+				15F8EF82151DACD100C6CEBF /* CSViewController.m in Sources */,
+				15F8EF88151DACE100C6CEBF /* main.m in Sources */,
+				15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */,
+				15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15F8EF6D151DAB2400C6CEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		15F8EF6E151DAB2400C6CEBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15F8EF70151DAB2400C6CEBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting/CSLinearLayoutViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "Supporting/CSLinearLayoutViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		15F8EF71151DAB2400C6CEBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting/CSLinearLayoutViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "Supporting/CSLinearLayoutViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15F8EF4B151DAB2400C6CEBF /* Build configuration list for PBXProject "CSLinearLayoutView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15F8EF6D151DAB2400C6CEBF /* Debug */,
+				15F8EF6E151DAB2400C6CEBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15F8EF6F151DAB2400C6CEBF /* Build configuration list for PBXNativeTarget "CSLinearLayoutViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15F8EF70151DAB2400C6CEBF /* Debug */,
+				15F8EF71151DAB2400C6CEBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 15F8EF48151DAB2400C6CEBF /* Project object */;
+}

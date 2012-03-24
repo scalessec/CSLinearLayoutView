@@ -27,21 +27,31 @@
     UIView *redView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
     redView.backgroundColor = [UIColor redColor];
     CSLinearLayoutItem *redItem = [[[CSLinearLayoutItem alloc] initWithView:redView] autorelease];
-    redItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 0.0, 0.0);
+    redItem.padding = CSLinearLayoutMakePadding(20.0, 0.0, 50.0, 0.0);
+    redItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     [_linearLayoutView addItem:redItem];
     
     UIView *yellowView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
     yellowView.backgroundColor = [UIColor yellowColor];
     CSLinearLayoutItem *yellowItem = [[[CSLinearLayoutItem alloc] initWithView:yellowView] autorelease];
-    yellowItem.padding = CSLinearLayoutMakePadding(10.0, 50.0, 0.0, 0.0);
+    yellowItem.padding = CSLinearLayoutMakePadding(10.0, 5.0, 0.0, 5.0);
+    yellowItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentRight;
     [_linearLayoutView addItem:yellowItem];
     
     UIView *blueView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
     blueView.backgroundColor = [UIColor blueColor];
     CSLinearLayoutItem *blueItem = [[[CSLinearLayoutItem alloc] initWithView:blueView] autorelease];
-    blueItem.padding = CSLinearLayoutMakePadding(5.0, 20.0, 0.0, 0.0);
+    blueItem.padding = CSLinearLayoutMakePadding(10.0, 20.0, 0.0, 10.0);
+    blueItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentRight;
     [_linearLayoutView addItem:blueItem];
     
+    UIView *greenView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
+    greenView.backgroundColor = [UIColor greenColor];
+    CSLinearLayoutItem *greenItem = [[[CSLinearLayoutItem alloc] initWithView:greenView] autorelease];
+    greenItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 10.0);
+    greenItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
+    [_linearLayoutView insertItem:greenItem atIndex:0];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -14,7 +14,7 @@ typedef enum {
     CSLinearLayoutViewOrientationHorizontal
 } CSLinearLayoutViewOrientation;
 
-@interface CSLinearLayoutView : UIView
+@interface CSLinearLayoutView : UIScrollView
 
 @property (nonatomic, readonly) NSMutableArray *items;
 @property (nonatomic, assign) CSLinearLayoutViewOrientation orientation;
@@ -24,10 +24,12 @@ typedef enum {
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem;
 - (void)insertItem:(CSLinearLayoutItem *)newItem afterItem:(CSLinearLayoutItem *)existingItem;
-- (void)insertItem:(CSLinearLayoutItem *)newItem atIndex:(NSInteger)index;
+- (void)insertItem:(CSLinearLayoutItem *)newItem atIndex:(NSUInteger)index;
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem beforeItem:(CSLinearLayoutItem *)existingItem;
 - (void)moveItem:(CSLinearLayoutItem *)movingItem afterItem:(CSLinearLayoutItem *)existingItem;
-- (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSInteger)index;
+- (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSUInteger)index;
+
+- (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem;
 
 @end

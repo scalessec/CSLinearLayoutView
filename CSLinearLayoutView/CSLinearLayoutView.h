@@ -18,15 +18,16 @@ typedef enum {
 
 @property (nonatomic, readonly) NSMutableArray *items;
 @property (nonatomic, assign) CSLinearLayoutViewOrientation orientation;
-@property (nonatomic, assign) UIEdgeInsets *padding;
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem;
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem;
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem;
 - (void)insertItem:(CSLinearLayoutItem *)newItem afterItem:(CSLinearLayoutItem *)existingItem;
+- (void)insertItem:(CSLinearLayoutItem *)newItem atIndex:(NSInteger)index;
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem beforeItem:(CSLinearLayoutItem *)existingItem;
 - (void)moveItem:(CSLinearLayoutItem *)movingItem afterItem:(CSLinearLayoutItem *)existingItem;
+- (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSInteger)index;
 
 @end

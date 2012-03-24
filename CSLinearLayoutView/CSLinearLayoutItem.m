@@ -12,8 +12,8 @@
 
 @synthesize view = _view;
 @synthesize contentMode = _contentMode;
-@synthesize gravity = _gravity;
-@synthesize weight = _weight;
+@synthesize horizontalAlignment = _horizontalAlignment;
+@synthesize verticalAlignment = _verticalAlignment;
 @synthesize padding = _padding;
 @synthesize tag = _tag;
 @synthesize userInfo = _userInfo;
@@ -23,7 +23,8 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.weight = 1.0;
+        self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
+        self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
     }
     return self;
 }
@@ -32,7 +33,8 @@
     self = [super init];
     if (self) {
         self.view = aView;
-        self.weight = 1.0;
+        self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
+        self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
     }
     return self;
 }
@@ -45,6 +47,19 @@
     self.userInfo = nil;
     
     [super dealloc];
+}
+
+
+#pragma mark - Helpers
+
+CSLinearLayoutItemPadding CSLinearLayoutMakePadding(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
+    CSLinearLayoutItemPadding padding;
+    padding.top = top;
+    padding.left = left;
+    padding.bottom = bottom;
+    padding.right = right;
+    
+    return padding;
 }
 
 @end

@@ -20,17 +20,28 @@
     [super viewDidLoad];
     
     self.linearLayoutView = [[[CSLinearLayoutView alloc] initWithFrame:self.view.bounds] autorelease];
-    _linearLayoutView.orientation = CSLinearLayoutViewOrientationVertical;
-    _linearLayoutView.backgroundColor = [UIColor blueColor];
+    self.linearLayoutView.orientation = CSLinearLayoutViewOrientationVertical;
+    _linearLayoutView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:_linearLayoutView];
     
-    UIButton *topButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [topButton setTitle:@"Top Button" forState:UIControlStateNormal];
-    topButton.frame = CGRectMake(10.0, 10.0, 200.0, 40.0);
+    UIView *redView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
+    redView.backgroundColor = [UIColor redColor];
+    CSLinearLayoutItem *redItem = [[[CSLinearLayoutItem alloc] initWithView:redView] autorelease];
+    redItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 0.0, 0.0);
+    [_linearLayoutView addItem:redItem];
     
-    CSLinearLayoutItem *topButtonItem = [[[CSLinearLayoutItem alloc] initWithView:topButton] autorelease];
-    topButtonItem.gravity = CSLinearLayoutItemGravityTop;
-    [_linearLayoutView addItem:topButtonItem];
+    UIView *yellowView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
+    yellowView.backgroundColor = [UIColor yellowColor];
+    CSLinearLayoutItem *yellowItem = [[[CSLinearLayoutItem alloc] initWithView:yellowView] autorelease];
+    yellowItem.padding = CSLinearLayoutMakePadding(10.0, 50.0, 0.0, 0.0);
+    [_linearLayoutView addItem:yellowItem];
+    
+    UIView *blueView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 40.0)] autorelease];
+    blueView.backgroundColor = [UIColor blueColor];
+    CSLinearLayoutItem *blueItem = [[[CSLinearLayoutItem alloc] initWithView:blueView] autorelease];
+    blueItem.padding = CSLinearLayoutMakePadding(5.0, 20.0, 0.0, 0.0);
+    [_linearLayoutView addItem:blueItem];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

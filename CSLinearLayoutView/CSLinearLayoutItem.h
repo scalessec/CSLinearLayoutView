@@ -14,24 +14,36 @@ typedef enum {
 } CSLinearLayoutItemContentMode;
 
 typedef enum {
-    CSLinearLayoutItemGravityLeft,      
-    CSLinearLayoutItemGravityRight,   
-    CSLinearLayoutItemGravityCenterVertical,
-    CSLinearLayoutItemGravityCenterHorizontal,
-    CSLinearLayoutItemGravityTop,
-    CSLinearLayoutItemGravityBottom
-} CSLinearLayoutItemGravity;
+    CSLinearLayoutItemHorizontalAlignmentLeft,      
+    CSLinearLayoutItemHorizontalAlignmentRight,   
+    CSLinearLayoutItemHorizontalAlignmentCenter
+} CSLinearLayoutItemHorizontalAlignment;
+
+typedef enum {
+    CSLinearLayoutItemVerticalAlignmentTop,      
+    CSLinearLayoutItemVerticalAlignmentBottom,   
+    CSLinearLayoutItemVerticalAlignmentCenter
+} CSLinearLayoutItemVerticalAlignment;
+
+typedef struct {
+    CGFloat top;
+    CGFloat left;
+    CGFloat bottom;
+    CGFloat right;
+} CSLinearLayoutItemPadding;
 
 @interface CSLinearLayoutItem : NSObject
 
 @property (nonatomic, retain) UIView *view;
 @property (nonatomic, assign) CSLinearLayoutItemContentMode contentMode;
-@property (nonatomic, assign) CSLinearLayoutItemGravity gravity;
-@property (nonatomic, assign) CGFloat weight;
-@property (nonatomic, assign) UIEdgeInsets padding;
+@property (nonatomic, assign) CSLinearLayoutItemHorizontalAlignment horizontalAlignment;
+@property (nonatomic, assign) CSLinearLayoutItemVerticalAlignment verticalAlignment;
+@property (nonatomic, assign) CSLinearLayoutItemPadding padding;
 @property (nonatomic, assign) NSDictionary *userInfo;
 @property (nonatomic, assign) NSInteger tag;
 
 - (id)initWithView:(UIView *)aView;
+
+CSLinearLayoutItemPadding CSLinearLayoutMakePadding(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
 
 @end

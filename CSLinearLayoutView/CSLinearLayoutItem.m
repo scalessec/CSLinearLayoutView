@@ -13,6 +13,7 @@
 @synthesize view = _view;
 @synthesize contentMode = _contentMode;
 @synthesize gravity = _gravity;
+@synthesize weight = _weight;
 @synthesize padding = _padding;
 @synthesize tag = _tag;
 @synthesize userInfo = _userInfo;
@@ -22,7 +23,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        
+        self.weight = 1.0;
     }
     return self;
 }
@@ -31,6 +32,7 @@
     self = [super init];
     if (self) {
         self.view = aView;
+        self.weight = 1.0;
     }
     return self;
 }

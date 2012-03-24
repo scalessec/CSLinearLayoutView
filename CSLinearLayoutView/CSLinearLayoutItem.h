@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    CSLinearLayoutItemContentModeNormal,
-    CSLinearLayoutItemContentModeFill
+    CSLinearLayoutItemContentModeNormal, 
+    CSLinearLayoutItemContentModeFill    
 } CSLinearLayoutItemContentMode;
 
 typedef enum {
-    CSLinearLayoutItemGravityLeft,
-    CSLinearLayoutItemGravityRight,
-    CSLinearLayoutItemGravityCenter,
+    CSLinearLayoutItemGravityLeft,      
+    CSLinearLayoutItemGravityRight,   
+    CSLinearLayoutItemGravityCenterVertical,
+    CSLinearLayoutItemGravityCenterHorizontal,
     CSLinearLayoutItemGravityTop,
     CSLinearLayoutItemGravityBottom
 } CSLinearLayoutItemGravity;
@@ -26,8 +27,8 @@ typedef enum {
 @property (nonatomic, retain) UIView *view;
 @property (nonatomic, assign) CSLinearLayoutItemContentMode contentMode;
 @property (nonatomic, assign) CSLinearLayoutItemGravity gravity;
+@property (nonatomic, assign) CGFloat weight;
 @property (nonatomic, assign) UIEdgeInsets padding;
-
 @property (nonatomic, assign) NSDictionary *userInfo;
 @property (nonatomic, assign) NSInteger tag;
 

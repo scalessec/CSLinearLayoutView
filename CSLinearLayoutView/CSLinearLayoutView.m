@@ -60,10 +60,6 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
-
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:2.0];
-    
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
     
@@ -128,8 +124,6 @@
         relativePosition += delta + endPadding;
         
     }
-    
-    [UIView commitAnimations];
 }
 
 

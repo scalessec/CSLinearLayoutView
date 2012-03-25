@@ -55,8 +55,8 @@
     greenItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     greenItem.fillMode = CSLinearLayoutItemFillModeStretch;
     [_linearLayoutView insertItem:greenItem atIndex:0];
-
-
+    
+    NSLog(@"%f", [_linearLayoutView contentDelta]);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

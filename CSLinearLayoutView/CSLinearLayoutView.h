@@ -32,4 +32,6 @@ typedef enum {
 
 - (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem;
 
+- (CGFloat)contentDelta;
+
 @end

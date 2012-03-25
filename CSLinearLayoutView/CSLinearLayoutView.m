@@ -13,7 +13,6 @@
 @synthesize items = _items;
 @synthesize orientation = _orientation;
 
-
 #pragma mark - Factories
 
 - (id)init {
@@ -60,6 +59,7 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
+    
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
     
@@ -126,6 +126,19 @@
     }
 }
 
+- (CGFloat)contentDelta {
+    CGFloat delta = 0.0;
+    
+    for (CSLinearLayoutItem *item in _items) {
+        if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
+            delta += item.padding.left + item.view.frame.size.width + item.padding.right;
+        } else {
+            delta += item.padding.top + item.view.frame.size.height + item.padding.bottom;
+        }
+    }
+    
+    return delta;
+}
 
 #pragma mark - Overrides
 

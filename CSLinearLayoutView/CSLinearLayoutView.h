@@ -18,6 +18,7 @@ typedef enum {
 
 @property (nonatomic, readonly) NSMutableArray *items;
 @property (nonatomic, assign) CSLinearLayoutViewOrientation orientation;
+@property (nonatomic, readonly) CGFloat contentDelta;
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem;
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem;
@@ -31,7 +32,5 @@ typedef enum {
 - (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSUInteger)index;
 
 - (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem;
-
-- (CGFloat)contentDelta;
 
 @end

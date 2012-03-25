@@ -127,6 +127,14 @@
     }
 }
 
+
+#pragma mark - Overrides
+
+- (void)setOrientation:(CSLinearLayoutViewOrientation)anOrientation {
+    _orientation = anOrientation;
+    [self setNeedsLayout];
+}
+
 - (CGFloat)contentDelta {
     CGFloat delta = 0.0;
     
@@ -139,13 +147,6 @@
     }
     
     return delta;
-}
-
-#pragma mark - Overrides
-
-- (void)setOrientation:(CSLinearLayoutViewOrientation)anOrientation {
-    _orientation = anOrientation;
-    [self setNeedsLayout];
 }
 
 

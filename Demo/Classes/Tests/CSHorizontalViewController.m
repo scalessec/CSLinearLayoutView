@@ -55,12 +55,12 @@
     descriptionLabel.numberOfLines = 0;
     descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
     descriptionLabel.font = [UIFont systemFontOfSize:14.0];
-    descriptionLabel.text = @"Horizontal orientation. Tap the button to add a new view. Tap a colored view to remove. This label and button vertically aligned center. Colored views stretch to fill parent.";
-    CGSize descriptionSize = [descriptionLabel.text sizeWithFont:descriptionLabel.font constrainedToSize:CGSizeMake(70.0, _linearLayoutView.frame.size.height)];
+    descriptionLabel.text = @"Horizontal orientation. Tap the button to add a new view. Tap a colored view to remove. The label and button are vertically aligned center. Colored views stretch to fill parent.";
+    CGSize descriptionSize = [descriptionLabel.text sizeWithFont:descriptionLabel.font constrainedToSize:CGSizeMake(70.0, _linearLayoutView.frame.size.height - 20.0)];
     descriptionLabel.frame = CGRectMake(0.0, 0.0, 70.0, descriptionSize.height);
     
     CSLinearLayoutItem *labelItem = [[[CSLinearLayoutItem alloc] initWithView:descriptionLabel] autorelease];
-    labelItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 0.0, 10.0);
+    labelItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 10.0);
     labelItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_linearLayoutView addItem:labelItem];
     
@@ -107,7 +107,7 @@
     [_linearLayoutView insertItem:item atIndex:index];
     
     // adjust the content size
-    CGFloat contentWidth = MAX(_linearLayoutView.frame.size.width, [_linearLayoutView contentDelta]);
+    CGFloat contentWidth = MAX(_linearLayoutView.frame.size.width, _linearLayoutView.contentDelta);
     _linearLayoutView.contentSize = CGSizeMake(contentWidth, _linearLayoutView.frame.size.height);
     
     // scroll to the right

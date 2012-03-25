@@ -107,7 +107,7 @@
     [_linearLayoutView insertItem:item atIndex:index];
     
     // adjust the content size
-    CGFloat contentHeight = MAX(_linearLayoutView.frame.size.height, [_linearLayoutView contentDelta]);
+    CGFloat contentHeight = MAX(_linearLayoutView.frame.size.height, _linearLayoutView.contentDelta);
     _linearLayoutView.contentSize = CGSizeMake(_linearLayoutView.frame.size.width, contentHeight);
     
     // scroll to the bottom

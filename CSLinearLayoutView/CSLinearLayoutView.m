@@ -59,6 +59,7 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
+    NSLog(@"layout subviews");
     
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
@@ -101,7 +102,7 @@
         CGFloat delta = 0.0;
         if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
             
-            CGFloat height = item.view.frame.size.width;
+            CGFloat height = item.view.frame.size.height;
             if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 height = self.frame.size.height - (item.padding.top + item.padding.bottom);
             }

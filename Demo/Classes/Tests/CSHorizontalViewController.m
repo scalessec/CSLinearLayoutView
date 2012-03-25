@@ -32,7 +32,6 @@
     
     CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:view] autorelease];
     item.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 0.0);
-    item.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
     item.fillMode = CSLinearLayoutItemFillModeStretch;
 
     return item;
@@ -45,7 +44,7 @@
     
     // setup the linear layout
     self.linearLayoutView = [[[CSLinearLayoutView alloc] initWithFrame:self.view.bounds] autorelease];
-    _linearLayoutView.orientation = CSLinearLayoutViewOrientationHorizontal;
+    self.linearLayoutView.orientation = CSLinearLayoutViewOrientationHorizontal;
     _linearLayoutView.scrollEnabled = YES;
     _linearLayoutView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _linearLayoutView.backgroundColor = [UIColor whiteColor];
@@ -56,12 +55,13 @@
     descriptionLabel.numberOfLines = 0;
     descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
     descriptionLabel.font = [UIFont systemFontOfSize:14.0];
-    descriptionLabel.text = @"Horizontal orientation. Tap the button to add a new view. Tap a colored view to remove. Fill mode is set to stretch.";
-    descriptionLabel.frame = CGRectMake(0.0, 0.0, 70.0, 100.0);
+    descriptionLabel.text = @"Horizontal orientation. Tap the button to add a new view. Tap a colored view to remove. This label and button vertically aligned center. Colored views stretch to fill parent.";
+    CGSize descriptionSize = [descriptionLabel.text sizeWithFont:descriptionLabel.font constrainedToSize:CGSizeMake(70.0, _linearLayoutView.frame.size.height)];
+    descriptionLabel.frame = CGRectMake(0.0, 0.0, 70.0, descriptionSize.height);
     
     CSLinearLayoutItem *labelItem = [[[CSLinearLayoutItem alloc] initWithView:descriptionLabel] autorelease];
     labelItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 0.0, 10.0);
-    labelItem.fillMode = CSLinearLayoutItemFillModeStretch;
+    labelItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_linearLayoutView addItem:labelItem];
     
     // add three random views
@@ -72,14 +72,13 @@
     
     // button to add more views
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addButton.frame = CGRectMake(0.0, 0.0, 50.0, 300.0);
+    addButton.frame = CGRectMake(0.0, 0.0, 50.0, 200.0);
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(handleAddView) forControlEvents:UIControlEventTouchUpInside];
     
     CSLinearLayoutItem *buttonItem = [[[CSLinearLayoutItem alloc] initWithView:addButton] autorelease];
     buttonItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 20.0);
-    buttonItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
-    buttonItem.fillMode = CSLinearLayoutItemFillModeStretch;
+    buttonItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_linearLayoutView addItem:buttonItem];
     
 }

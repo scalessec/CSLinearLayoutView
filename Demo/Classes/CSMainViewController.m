@@ -8,6 +8,8 @@
 
 #import "CSMainViewController.h"
 #import "CSLinearLayoutItem.h"
+#import "CSVerticalViewController.h"
+#import "CSHorizontalViewController.h"
 
 @implementation CSMainViewController
 
@@ -47,12 +49,12 @@
         }
             
         case 1: {
-            
+            viewController = [[[CSVerticalViewController alloc] init] autorelease];
             break;
         }
             
         case 2: {
-            
+            viewController = [[[CSHorizontalViewController alloc] init] autorelease];
             break;
         }
             
@@ -71,10 +73,6 @@
             break;
         }
             
-        case 6: {
-            
-            break;
-        }
     }
     
     if (viewController != nil) {
@@ -87,7 +85,7 @@
 #pragma mark - UITableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,22 +107,18 @@
             break;
             
         case 2: 
-            cell.textLabel.text = @"Vertical Layout (Scrolling)"; 
-            break;
-            
-        case 3: 
             cell.textLabel.text = @"Horizontal Layout"; 
             break;
             
-        case 4: 
-            cell.textLabel.text = @"Horizontal Layout (Scrolling)"; 
+        case 3:
+            cell.textLabel.text = @"Switching Layouts";
             break;
             
-        case 5: 
+        case 4: 
             cell.textLabel.text = @"Padding"; 
             break;
             
-        case 6: 
+        case 5: 
             cell.textLabel.text = @"Fill Modes"; 
             break;
             

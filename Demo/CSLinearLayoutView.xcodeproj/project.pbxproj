@@ -15,6 +15,9 @@
 		15F8EF88151DACE100C6CEBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF86151DACE100C6CEBF /* main.m */; };
 		15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */; };
 		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; };
+		15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */; };
+		15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */; };
+		15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,12 @@
 		15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutItem.m; path = ../CSLinearLayoutView/CSLinearLayoutItem.m; sourceTree = SOURCE_ROOT; };
 		15F8EF91151DAE5B00C6CEBF /* CSLinearLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLinearLayoutView.h; path = ../CSLinearLayoutView/CSLinearLayoutView.h; sourceTree = SOURCE_ROOT; };
 		15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutView.m; path = ../CSLinearLayoutView/CSLinearLayoutView.m; sourceTree = SOURCE_ROOT; };
+		15F8EFAE151ED34D00C6CEBF /* CSVerticalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSVerticalViewController.h; path = Classes/Tests/CSVerticalViewController.h; sourceTree = SOURCE_ROOT; };
+		15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSVerticalViewController.m; path = Classes/Tests/CSVerticalViewController.m; sourceTree = SOURCE_ROOT; };
+		15F8EFB7151ED9ED00C6CEBF /* UIColor+RandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RandomColor.h"; sourceTree = "<group>"; };
+		15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RandomColor.m"; sourceTree = "<group>"; };
+		15F8EFBA151EDF6D00C6CEBF /* CSHorizontalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHorizontalViewController.h; sourceTree = "<group>"; };
+		15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHorizontalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,7 @@
 				15F8EF7E151DACD100C6CEBF /* CSMainViewController.h */,
 				15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */,
 				15F8EFAC151ECCF400C6CEBF /* Tests */,
+				15F8EFB6151ED9D800C6CEBF /* Categories */,
 				15F8EF5C151DAB2400C6CEBF /* Supporting Files */,
 			);
 			name = Demo;
@@ -116,9 +126,23 @@
 		15F8EFAC151ECCF400C6CEBF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				15F8EFAE151ED34D00C6CEBF /* CSVerticalViewController.h */,
+				15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */,
+				15F8EFBA151EDF6D00C6CEBF /* CSHorizontalViewController.h */,
+				15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */,
 			);
 			name = Tests;
 			path = Classes/Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		15F8EFB6151ED9D800C6CEBF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				15F8EFB7151ED9ED00C6CEBF /* UIColor+RandomColor.h */,
+				15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */,
+			);
+			name = Categories;
+			path = Classes/Categories;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -187,6 +211,9 @@
 				15F8EF88151DACE100C6CEBF /* main.m in Sources */,
 				15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */,
 				15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */,
+				15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */,
+				15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */,
+				15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

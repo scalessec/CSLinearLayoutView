@@ -106,13 +106,11 @@
     NSUInteger index = [_linearLayoutView.items count] - 1;
     [_linearLayoutView insertItem:item atIndex:index];
     
-    // adjust the content size
-    CGFloat contentWidth = MAX(_linearLayoutView.frame.size.width, _linearLayoutView.contentDelta);
-    _linearLayoutView.contentSize = CGSizeMake(contentWidth, _linearLayoutView.frame.size.height);
-    
-    // scroll to the right
-    CGPoint rightOffset = CGPointMake(_linearLayoutView.contentSize.width - _linearLayoutView.bounds.size.width, 0);
-    [_linearLayoutView setContentOffset:rightOffset animated:YES];
+    // scroll to the right, if necessary
+    if (_linearLayoutView.frame.size.width < _linearLayoutView.contentDelta) {
+        CGPoint rightOffset = CGPointMake(_linearLayoutView.contentDelta - _linearLayoutView.frame.size.width, 0);
+        [_linearLayoutView setContentOffset:rightOffset animated:YES];
+    }
 }
 
 - (void)handleRemoveView:(UITapGestureRecognizer*)recognizer {

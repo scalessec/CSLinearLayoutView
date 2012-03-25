@@ -18,6 +18,8 @@
 		15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */; };
 		15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */; };
 		15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */; };
+		15F8EFC0151F6F5900C6CEBF /* CSOrientationSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFBE151F6F5800C6CEBF /* CSOrientationSwitchViewController.m */; };
+		15F8EFC1151F6F5900C6CEBF /* CSOrientationSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15F8EFBF151F6F5800C6CEBF /* CSOrientationSwitchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,9 @@
 		15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RandomColor.m"; sourceTree = "<group>"; };
 		15F8EFBA151EDF6D00C6CEBF /* CSHorizontalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSHorizontalViewController.h; sourceTree = "<group>"; };
 		15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSHorizontalViewController.m; sourceTree = "<group>"; };
+		15F8EFBD151F6F5800C6CEBF /* CSOrientationSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSOrientationSwitchViewController.h; sourceTree = "<group>"; };
+		15F8EFBE151F6F5800C6CEBF /* CSOrientationSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSOrientationSwitchViewController.m; sourceTree = "<group>"; };
+		15F8EFBF151F6F5800C6CEBF /* CSOrientationSwitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CSOrientationSwitchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +135,9 @@
 				15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */,
 				15F8EFBA151EDF6D00C6CEBF /* CSHorizontalViewController.h */,
 				15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */,
+				15F8EFBD151F6F5800C6CEBF /* CSOrientationSwitchViewController.h */,
+				15F8EFBE151F6F5800C6CEBF /* CSOrientationSwitchViewController.m */,
+				15F8EFBF151F6F5800C6CEBF /* CSOrientationSwitchViewController.xib */,
 			);
 			name = Tests;
 			path = Classes/Tests;
@@ -196,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15F8EFC1151F6F5900C6CEBF /* CSOrientationSwitchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +223,7 @@
 				15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */,
 				15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */,
 				15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */,
+				15F8EFC0151F6F5900C6CEBF /* CSOrientationSwitchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

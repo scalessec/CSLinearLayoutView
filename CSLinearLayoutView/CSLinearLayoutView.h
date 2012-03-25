@@ -19,6 +19,7 @@ typedef enum {
 @property (nonatomic, readonly) NSMutableArray *items;
 @property (nonatomic, assign) CSLinearLayoutViewOrientation orientation;
 @property (nonatomic, readonly) CGFloat contentDelta;
+@property (nonatomic, assign) BOOL autoAdjustContentSize; // default is YES
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem;
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem;

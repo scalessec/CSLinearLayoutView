@@ -12,6 +12,7 @@
 
 @synthesize items = _items;
 @synthesize orientation = _orientation;
+@synthesize autoAdjustContentSize = _autoAdjustContentSize;
 
 #pragma mark - Factories
 
@@ -19,8 +20,9 @@
     self = [super init];
     if (self) {
         _items = [[NSMutableArray alloc] init];
+        _orientation = CSLinearLayoutViewOrientationVertical;
+        _autoAdjustContentSize = YES;
         self.autoresizesSubviews = NO;
-        self.orientation = CSLinearLayoutViewOrientationVertical;
         
     }
     return self;
@@ -30,8 +32,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         _items = [[NSMutableArray alloc] init];
+        _orientation = CSLinearLayoutViewOrientationVertical;
+        _autoAdjustContentSize = YES;
         self.autoresizesSubviews = NO;
-        self.orientation = CSLinearLayoutViewOrientationVertical;
     }
     return self;
 }
@@ -40,8 +43,9 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _items = [[NSMutableArray alloc] init];
+        _orientation = CSLinearLayoutViewOrientationVertical;
+        _autoAdjustContentSize = YES;
         self.autoresizesSubviews = NO;
-        self.orientation = CSLinearLayoutViewOrientationVertical;
     }
     return self;
 }
@@ -124,6 +128,16 @@
         
         relativePosition += delta + endPadding;
         
+    }
+    
+    if (_autoAdjustContentSize == YES) {
+        if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
+            CGFloat contentWidth = MAX(self.frame.size.width, self.contentDelta);
+            self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
+        } else {
+            CGFloat contentHeight = MAX(self.frame.size.height, self.contentDelta);
+            self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
+        }
     }
 }
 

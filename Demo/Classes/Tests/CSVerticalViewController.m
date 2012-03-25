@@ -65,7 +65,7 @@
     [_linearLayoutView addItem:labelItem];
     
     // add three random views
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<2; i++) {
         CSLinearLayoutItem *item = [self newItem];
         [_linearLayoutView addItem:item];
     }
@@ -106,13 +106,11 @@
     NSUInteger index = [_linearLayoutView.items count] - 1;
     [_linearLayoutView insertItem:item atIndex:index];
     
-    // adjust the content size
-    CGFloat contentHeight = MAX(_linearLayoutView.frame.size.height, _linearLayoutView.contentDelta);
-    _linearLayoutView.contentSize = CGSizeMake(_linearLayoutView.frame.size.width, contentHeight);
-    
-    // scroll to the bottom
-    CGPoint bottomOffset = CGPointMake(0, _linearLayoutView.contentSize.height - _linearLayoutView.bounds.size.height);
-    [_linearLayoutView setContentOffset:bottomOffset animated:YES];
+    // scroll to the bottom, if necessary
+    if (_linearLayoutView.frame.size.height < _linearLayoutView.contentDelta) {
+        CGPoint bottomOffset = CGPointMake(0, _linearLayoutView.contentDelta - _linearLayoutView.frame.size.height);
+        [_linearLayoutView setContentOffset:bottomOffset animated:YES];
+    }
 }
 
 - (void)handleRemoveView:(UITapGestureRecognizer*)recognizer {

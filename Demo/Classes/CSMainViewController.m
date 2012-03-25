@@ -10,6 +10,7 @@
 #import "CSLinearLayoutItem.h"
 #import "CSVerticalViewController.h"
 #import "CSHorizontalViewController.h"
+#import "CSOrientationSwitchViewController.h"
 
 @implementation CSMainViewController
 
@@ -59,7 +60,7 @@
         }
             
         case 3: {
-            
+            viewController = [[[CSOrientationSwitchViewController alloc] init] autorelease];
             break;
         }
             
@@ -111,7 +112,7 @@
             break;
             
         case 3:
-            cell.textLabel.text = @"Switching Layouts";
+            cell.textLabel.text = @"Switching Orientations";
             break;
             
         case 4: 

@@ -61,6 +61,9 @@
 
 - (void)layoutSubviews {
 
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:2.0];
+    
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
     
@@ -126,6 +129,7 @@
         
     }
     
+    [UIView commitAnimations];
 }
 
 
@@ -196,9 +200,12 @@
         return;
     }
     
-    NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
+    [movingItem retain];
     [_items removeObject:movingItem];
+    
+    NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
     [_items insertObject:movingItem atIndex:existingItemIndex];
+    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -208,6 +215,7 @@
         return;
     }
     
+    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (existingItem == [_items lastObject]) {
@@ -216,6 +224,7 @@
         NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
         [_items insertObject:movingItem atIndex:++existingItemIndex];
     }
+    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -225,6 +234,7 @@
         return;
     }
     
+    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (index == ([_items count] - 1)) {
@@ -232,6 +242,7 @@
     } else {
         [_items insertObject:movingItem atIndex:index];
     }
+    [movingItem release];
     
     [self setNeedsLayout];
 }

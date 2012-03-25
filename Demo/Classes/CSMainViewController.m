@@ -11,6 +11,7 @@
 #import "CSVerticalViewController.h"
 #import "CSHorizontalViewController.h"
 #import "CSOrientationSwitchViewController.h"
+#import "CSAlignmentViewController.h"
 
 @implementation CSMainViewController
 
@@ -65,7 +66,7 @@
         }
             
         case 4: {
-            
+            viewController = [[[CSAlignmentViewController alloc] init] autorelease];
             break;
         }
             

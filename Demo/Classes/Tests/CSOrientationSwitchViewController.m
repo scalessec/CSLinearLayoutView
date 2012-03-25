@@ -36,12 +36,12 @@
     }
 }
 
-- (void)viewDidUnload {
-    self.linearLayoutView = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)viewDidUnload {
+    self.linearLayoutView = nil;
 }
 
 - (void)dealloc {

@@ -64,8 +64,8 @@
     labelItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     [_linearLayoutView addItem:labelItem];
     
-    // add three random views
-    for (int i=0; i<2; i++) {
+    // add three views
+    for (int i=0; i<3; i++) {
         CSLinearLayoutItem *item = [self newItem];
         [_linearLayoutView addItem:item];
     }
@@ -83,12 +83,12 @@
     
 }
 
-- (void)viewDidUnload {
-    self.linearLayoutView = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)viewDidUnload {
+    self.linearLayoutView = nil;
 }
 
 - (void)dealloc {

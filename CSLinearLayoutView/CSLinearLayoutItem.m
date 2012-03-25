@@ -11,7 +11,7 @@
 @implementation CSLinearLayoutItem
 
 @synthesize view = _view;
-@synthesize contentMode = _contentMode;
+@synthesize fillMode = _fillMode;
 @synthesize horizontalAlignment = _horizontalAlignment;
 @synthesize verticalAlignment = _verticalAlignment;
 @synthesize padding = _padding;
@@ -25,6 +25,7 @@
     if (self) {
         self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
         self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
+        self.fillMode = CSLinearLayoutItemFillModeNormal;
     }
     return self;
 }
@@ -35,6 +36,7 @@
         self.view = aView;
         self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
         self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
+        self.fillMode = CSLinearLayoutItemFillModeNormal;
     }
     return self;
 }

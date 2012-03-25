@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    CSLinearLayoutItemContentModeNormal, 
-    CSLinearLayoutItemContentModeFill    
-} CSLinearLayoutItemContentMode;
+    CSLinearLayoutItemFillModeNormal, 
+    CSLinearLayoutItemFillModeStretch   
+} CSLinearLayoutItemFillMode;
 
 typedef enum {
     CSLinearLayoutItemHorizontalAlignmentLeft,      
@@ -35,7 +35,7 @@ typedef struct {
 @interface CSLinearLayoutItem : NSObject
 
 @property (nonatomic, retain) UIView *view;
-@property (nonatomic, assign) CSLinearLayoutItemContentMode contentMode;
+@property (nonatomic, assign) CSLinearLayoutItemFillMode fillMode;
 @property (nonatomic, assign) CSLinearLayoutItemHorizontalAlignment horizontalAlignment;
 @property (nonatomic, assign) CSLinearLayoutItemVerticalAlignment verticalAlignment;
 @property (nonatomic, assign) CSLinearLayoutItemPadding padding;

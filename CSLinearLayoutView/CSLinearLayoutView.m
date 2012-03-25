@@ -74,7 +74,7 @@
             startPadding = item.padding.left;
             endPadding = item.padding.right;
             
-            if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentTop) {
+            if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentTop || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.top;
             } else if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentBottom) {
                 absolutePosition = self.frame.size.height - item.view.frame.size.height - item.padding.bottom;
@@ -87,7 +87,7 @@
             startPadding = item.padding.top;
             endPadding = item.padding.bottom;
             
-            if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentLeft) {
+            if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentLeft || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.left;
             } else if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentRight) {
                 absolutePosition = self.frame.size.width - item.view.frame.size.width - item.padding.right;
@@ -101,11 +101,25 @@
         
         CGFloat delta = 0.0;
         if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-            item.view.frame = CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, item.view.frame.size.height);
+            
+            CGFloat height = item.view.frame.size.width;
+            if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
+                height = self.frame.size.height - (item.padding.top + item.padding.bottom);
+            }
+            
+            item.view.frame = CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height);
             delta = item.view.frame.size.width;
+            
         } else {
-            item.view.frame = CGRectMake(absolutePosition, relativePosition, item.view.frame.size.width, item.view.frame.size.height);
+            
+            CGFloat width = item.view.frame.size.width;
+            if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
+                width = self.frame.size.width - (item.padding.left + item.padding.right);
+            }
+            
+            item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
             delta = item.view.frame.size.height;
+            
         }
         
         relativePosition += delta + endPadding;

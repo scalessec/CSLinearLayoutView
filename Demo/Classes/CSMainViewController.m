@@ -115,7 +115,7 @@
             break;
             
         case 4: 
-            cell.textLabel.text = @"Padding"; 
+            cell.textLabel.text = @"Alignment"; 
             break;
             
         case 5: 

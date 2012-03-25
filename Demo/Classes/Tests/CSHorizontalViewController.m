@@ -24,8 +24,11 @@
 #pragma mark - Factories
 
 - (CSLinearLayoutItem *)newItem {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 360.0)] autorelease];
+    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 300.0)] autorelease];
     view.backgroundColor = [UIColor randomColor];
+    
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRemoveView:)] autorelease];
+    [view addGestureRecognizer:tap];
     
     CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:view] autorelease];
     item.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 0.0);
@@ -48,15 +51,28 @@
     _linearLayoutView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_linearLayoutView];
     
-    // add three items
+    // add a description label
+    UILabel *descriptionLabel = [[[UILabel alloc] init] autorelease];
+    descriptionLabel.numberOfLines = 0;
+    descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
+    descriptionLabel.font = [UIFont systemFontOfSize:14.0];
+    descriptionLabel.text = @"Horizontal orientation. Tap the button to add a new view. Tap a colored view to remove. Fill mode is set to stretch.";
+    descriptionLabel.frame = CGRectMake(0.0, 0.0, 70.0, 100.0);
+    
+    CSLinearLayoutItem *labelItem = [[[CSLinearLayoutItem alloc] initWithView:descriptionLabel] autorelease];
+    labelItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 0.0, 10.0);
+    labelItem.fillMode = CSLinearLayoutItemFillModeStretch;
+    [_linearLayoutView addItem:labelItem];
+    
+    // add three random views
     for (int i=0; i<3; i++) {
         CSLinearLayoutItem *item = [self newItem];
         [_linearLayoutView addItem:item];
     }
     
-    // add a button to add more views
+    // button to add more views
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addButton.frame = CGRectMake(0.0, 0.0, 50.0, 360.0);
+    addButton.frame = CGRectMake(0.0, 0.0, 50.0, 300.0);
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(handleAddView) forControlEvents:UIControlEventTouchUpInside];
     
@@ -98,6 +114,15 @@
     // scroll to the right
     CGPoint rightOffset = CGPointMake(_linearLayoutView.contentSize.width - _linearLayoutView.bounds.size.width, 0);
     [_linearLayoutView setContentOffset:rightOffset animated:YES];
+}
+
+- (void)handleRemoveView:(UITapGestureRecognizer*)recognizer {
+    for(CSLinearLayoutItem *item in _linearLayoutView.items) {
+        if(item.view == recognizer.view) {
+            [_linearLayoutView removeItem:item];
+            break;
+        }
+    }
 }
 
 @end

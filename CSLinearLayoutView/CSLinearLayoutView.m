@@ -164,8 +164,12 @@
         return;
     }
     
+    [linearLayoutItem retain];
+    
     [_items removeObject:linearLayoutItem];
     [linearLayoutItem.view removeFromSuperview];
+    
+    [linearLayoutItem release];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {

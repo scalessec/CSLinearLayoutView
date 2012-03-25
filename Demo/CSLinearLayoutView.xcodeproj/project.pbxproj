@@ -11,8 +11,7 @@
 		15F8EF58151DAB2400C6CEBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF57151DAB2400C6CEBF /* Foundation.framework */; };
 		15F8EF5A151DAB2400C6CEBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */; };
 		15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */; };
-		15F8EF82151DACD100C6CEBF /* CSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7F151DACD100C6CEBF /* CSViewController.m */; };
-		15F8EF83151DACD100C6CEBF /* CSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15F8EF80151DACD100C6CEBF /* CSViewController.xib */; };
+		15F8EF82151DACD100C6CEBF /* CSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */; };
 		15F8EF88151DACE100C6CEBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF86151DACE100C6CEBF /* main.m */; };
 		15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */; };
 		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; };
@@ -25,9 +24,8 @@
 		15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		15F8EF7C151DACD100C6CEBF /* CSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAppDelegate.h; path = Classes/CSAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAppDelegate.m; path = Classes/CSAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		15F8EF7E151DACD100C6CEBF /* CSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSViewController.h; path = Classes/CSViewController.h; sourceTree = SOURCE_ROOT; };
-		15F8EF7F151DACD100C6CEBF /* CSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSViewController.m; path = Classes/CSViewController.m; sourceTree = SOURCE_ROOT; };
-		15F8EF80151DACD100C6CEBF /* CSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CSViewController.xib; path = Classes/CSViewController.xib; sourceTree = SOURCE_ROOT; };
+		15F8EF7E151DACD100C6CEBF /* CSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMainViewController.h; path = Classes/CSMainViewController.h; sourceTree = SOURCE_ROOT; };
+		15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMainViewController.m; path = Classes/CSMainViewController.m; sourceTree = SOURCE_ROOT; };
 		15F8EF84151DACE100C6CEBF /* CSLinearLayoutViewDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "CSLinearLayoutViewDemo-Info.plist"; path = "Supporting/CSLinearLayoutViewDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		15F8EF85151DACE100C6CEBF /* CSLinearLayoutViewDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CSLinearLayoutViewDemo-Prefix.pch"; path = "Supporting/CSLinearLayoutViewDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		15F8EF86151DACE100C6CEBF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Supporting/main.m; sourceTree = SOURCE_ROOT; };
@@ -84,9 +82,9 @@
 			children = (
 				15F8EF7C151DACD100C6CEBF /* CSAppDelegate.h */,
 				15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */,
-				15F8EF7E151DACD100C6CEBF /* CSViewController.h */,
-				15F8EF7F151DACD100C6CEBF /* CSViewController.m */,
-				15F8EF80151DACD100C6CEBF /* CSViewController.xib */,
+				15F8EF7E151DACD100C6CEBF /* CSMainViewController.h */,
+				15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */,
+				15F8EFAC151ECCF400C6CEBF /* Tests */,
 				15F8EF5C151DAB2400C6CEBF /* Supporting Files */,
 			);
 			name = Demo;
@@ -114,6 +112,14 @@
 			name = CSLinearLayoutView;
 			path = CSLinearLayoutViewDemo;
 			sourceTree = "<group>";
+		};
+		15F8EFAC151ECCF400C6CEBF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			path = Classes/Tests;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -166,7 +172,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15F8EF83151DACD100C6CEBF /* CSViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */,
-				15F8EF82151DACD100C6CEBF /* CSViewController.m in Sources */,
+				15F8EF82151DACD100C6CEBF /* CSMainViewController.m in Sources */,
 				15F8EF88151DACE100C6CEBF /* main.m in Sources */,
 				15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */,
 				15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */,

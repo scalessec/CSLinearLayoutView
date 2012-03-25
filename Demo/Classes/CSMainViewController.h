@@ -1,5 +1,5 @@
 //
-//  CSViewController.h
+//  CSMainViewController.h
 //  CSLinearLayoutViewDemo
 //
 //  Created by Charles Scalesse on 3/24/12.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CSLinearLayoutView.h"
 
-@interface CSViewController : UIViewController
-
-@property (nonatomic, retain) CSLinearLayoutView *linearLayoutView;
+@interface CSMainViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

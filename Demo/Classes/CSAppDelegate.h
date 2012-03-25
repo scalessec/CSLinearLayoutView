@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@class CSViewController;
-
 @interface CSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) CSViewController *viewController;
+@property (nonatomic, retain) UINavigationController *navigationController;
 
 @end

@@ -45,33 +45,24 @@
     UIViewController *viewController = nil;
     
     switch (indexPath.row) {
+            
         case 0: {
-            
-            break;
-        }
-            
-        case 1: {
             viewController = [[[CSVerticalViewController alloc] init] autorelease];
             break;
         }
             
-        case 2: {
+        case 1: {
             viewController = [[[CSHorizontalViewController alloc] init] autorelease];
             break;
         }
             
-        case 3: {
+        case 2: {
             viewController = [[[CSOrientationSwitchViewController alloc] init] autorelease];
             break;
         }
             
-        case 4: {
+        case 3: {
             viewController = [[[CSAlignmentViewController alloc] init] autorelease];
-            break;
-        }
-            
-        case 5: {
-            
             break;
         }
             
@@ -87,7 +78,7 @@
 #pragma mark - UITableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,28 +91,21 @@
     }
     
     switch (indexPath.row) {
-        case 0: 
-            cell.textLabel.text = @"Real World Example"; 
-            break;
             
-        case 1: 
+        case 0: 
             cell.textLabel.text = @"Vertical Layout"; 
             break;
             
-        case 2: 
+        case 1: 
             cell.textLabel.text = @"Horizontal Layout"; 
             break;
             
-        case 3:
+        case 2:
             cell.textLabel.text = @"Switching Orientations";
             break;
             
-        case 4: 
+        case 3: 
             cell.textLabel.text = @"Alignment"; 
-            break;
-            
-        case 5: 
-            cell.textLabel.text = @"Fill Modes"; 
             break;
             
     }

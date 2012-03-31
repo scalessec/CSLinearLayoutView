@@ -63,7 +63,6 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
-    NSLog(@"layout subviews");
     
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;

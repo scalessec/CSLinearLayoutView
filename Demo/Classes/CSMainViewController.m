@@ -127,7 +127,7 @@
 #pragma mark - Memory Management
 
 - (void)dealloc {
-    [super release];
+    [super dealloc];
 }
 
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15073378154DD54400DA2877 /* lorem.txt in Resources */ = {isa = PBXBuildFile; fileRef = 15073377154DD54400DA2877 /* lorem.txt */; };
+		1507337B154DD61500DA2877 /* NSString+LoremIpsum.m in Sources */ = {isa = PBXBuildFile; fileRef = 1507337A154DD61500DA2877 /* NSString+LoremIpsum.m */; };
+		15F52BE0154DDC1C0084DFB1 /* UIView+LoadFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F52BDF154DDC1C0084DFB1 /* UIView+LoadFromNib.m */; };
 		15F8EF56151DAB2400C6CEBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF55151DAB2400C6CEBF /* UIKit.framework */; };
 		15F8EF58151DAB2400C6CEBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF57151DAB2400C6CEBF /* Foundation.framework */; };
 		15F8EF5A151DAB2400C6CEBF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F8EF59151DAB2400C6CEBF /* CoreGraphics.framework */; };
@@ -26,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15073377154DD54400DA2877 /* lorem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lorem.txt; sourceTree = "<group>"; };
+		15073379154DD61500DA2877 /* NSString+LoremIpsum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LoremIpsum.h"; sourceTree = "<group>"; };
+		1507337A154DD61500DA2877 /* NSString+LoremIpsum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LoremIpsum.m"; sourceTree = "<group>"; };
+		15F52BDE154DDC1C0084DFB1 /* UIView+LoadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromNib.h"; sourceTree = "<group>"; };
+		15F52BDF154DDC1C0084DFB1 /* UIView+LoadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromNib.m"; sourceTree = "<group>"; };
 		15F8EF51151DAB2400C6CEBF /* CSLinearLayoutViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSLinearLayoutViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F8EF55151DAB2400C6CEBF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15F8EF57151DAB2400C6CEBF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15073375154DD47100DA2877 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				15073377154DD54400DA2877 /* lorem.txt */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
 		15F8EF46151DAB2400C6CEBF = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +126,7 @@
 				15F8EFAC151ECCF400C6CEBF /* Tests */,
 				15F8EFB6151ED9D800C6CEBF /* Categories */,
 				15F8EF5C151DAB2400C6CEBF /* Supporting Files */,
+				15073375154DD47100DA2877 /* Resources */,
 			);
 			name = Demo;
 			path = CSLinearLayoutViewDemo;
@@ -160,6 +177,10 @@
 			children = (
 				15F8EFB7151ED9ED00C6CEBF /* UIColor+RandomColor.h */,
 				15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */,
+				15073379154DD61500DA2877 /* NSString+LoremIpsum.h */,
+				1507337A154DD61500DA2877 /* NSString+LoremIpsum.m */,
+				15F52BDE154DDC1C0084DFB1 /* UIView+LoadFromNib.h */,
+				15F52BDF154DDC1C0084DFB1 /* UIView+LoadFromNib.m */,
 			);
 			name = Categories;
 			path = Classes/Categories;
@@ -218,6 +239,7 @@
 			files = (
 				15F8EFC1151F6F5900C6CEBF /* CSOrientationSwitchViewController.xib in Resources */,
 				15F8EFC8151F91F100C6CEBF /* CSAlignmentViewController.xib in Resources */,
+				15073378154DD54400DA2877 /* lorem.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +260,8 @@
 				15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */,
 				15F8EFC0151F6F5900C6CEBF /* CSOrientationSwitchViewController.m in Sources */,
 				15F8EFC4151F911900C6CEBF /* CSAlignmentViewController.m in Sources */,
+				1507337B154DD61500DA2877 /* NSString+LoremIpsum.m in Sources */,
+				15F52BE0154DDC1C0084DFB1 /* UIView+LoadFromNib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

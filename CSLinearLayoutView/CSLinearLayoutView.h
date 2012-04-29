@@ -23,6 +23,7 @@ typedef enum {
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem;
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem;
+- (void)removeAllItems;
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem;
 - (void)insertItem:(CSLinearLayoutItem *)newItem afterItem:(CSLinearLayoutItem *)existingItem;

@@ -187,6 +187,13 @@
     [linearLayoutItem release];
 }
 
+- (void)removeAllItems {
+    [_items removeAllObjects];
+    for (UIView *subview in self.subviews) {
+        [subview removeFromSuperview];
+    }
+}
+
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {
     if (newItem == nil || [_items containsObject:newItem] == YES || existingItem == nil ||  [_items containsObject:existingItem] == NO) {
         return;

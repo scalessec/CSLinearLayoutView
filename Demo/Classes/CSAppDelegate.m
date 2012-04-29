@@ -25,7 +25,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     CSMainViewController *mainViewController = [[[CSMainViewController alloc] init] autorelease];
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:mainViewController] autorelease];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.5 alpha:1.0];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     

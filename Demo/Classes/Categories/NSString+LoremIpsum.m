@@ -30,7 +30,8 @@
     for (uint i=0; i < numberOfSentences; i++) {
         NSInteger index = arc4random() % (sentences.count - 1);
         NSString *sentence = [sentences objectAtIndex:index];
-        resultingPhrase = [resultingPhrase stringByAppendingString:[NSString stringWithFormat:@"%@. ", sentence]];
+        NSString *appendingString = (i == numberOfSentences - 1) ? @"." : @". "; 
+        resultingPhrase = [resultingPhrase stringByAppendingString:[NSString stringWithFormat:@"%@%@", sentence, appendingString]];
         [sentences removeObjectAtIndex:index];
     }
     

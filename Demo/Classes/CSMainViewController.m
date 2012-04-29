@@ -12,6 +12,7 @@
 #import "CSHorizontalViewController.h"
 #import "CSOrientationSwitchViewController.h"
 #import "CSAlignmentViewController.h"
+#import "CSBulletListViewController.h"
 
 @implementation CSMainViewController
 
@@ -66,6 +67,11 @@
             break;
         }
             
+        case 4: {
+            viewController = [[[CSBulletListViewController alloc] init] autorelease];
+            break;
+        }
+            
     }
     
     if (viewController != nil) {
@@ -78,7 +84,7 @@
 #pragma mark - UITableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,6 +112,10 @@
             
         case 3: 
             cell.textLabel.text = @"Alignment"; 
+            break;
+            
+        case 4: 
+            cell.textLabel.text = @"Sample Bullet List"; 
             break;
             
     }

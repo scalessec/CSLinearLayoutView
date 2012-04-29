@@ -28,7 +28,7 @@
         UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)] autorelease];
         view.backgroundColor = [UIColor randomColor];
         
-        CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:view] autorelease];
+        CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:view];
         item.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 10.0);
         item.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
         item.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;

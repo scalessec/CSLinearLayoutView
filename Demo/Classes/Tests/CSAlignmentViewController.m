@@ -39,7 +39,7 @@
     verticalTitleLabel.text = @"Vertical Layout";
     [verticalTitleLabel sizeToFit];
     
-    CSLinearLayoutItem *verticalTitleItem = [[[CSLinearLayoutItem alloc] initWithView:verticalTitleLabel] autorelease];
+    CSLinearLayoutItem *verticalTitleItem = [CSLinearLayoutItem layoutItemForView:verticalTitleLabel];
     verticalTitleItem.padding = CSLinearLayoutMakePadding(5.0, 0.0, 15.0, 0.0);
     verticalTitleItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     [_verticalLayoutView addItem:verticalTitleItem];
@@ -50,7 +50,7 @@
     leftLabel.text = @"Horizontal Left";
     [leftLabel sizeToFit];
     
-    CSLinearLayoutItem *leftItem = [[[CSLinearLayoutItem alloc] initWithView:leftLabel] autorelease];
+    CSLinearLayoutItem *leftItem = [CSLinearLayoutItem layoutItemForView:leftLabel];
     leftItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 15.0, 10.0);
     leftItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
     [_verticalLayoutView addItem:leftItem];
@@ -61,7 +61,7 @@
     horizontalCenterLabel.text = @"Horizontal Center";
     [horizontalCenterLabel sizeToFit];
     
-    CSLinearLayoutItem *horizontalCenterItem = [[[CSLinearLayoutItem alloc] initWithView:horizontalCenterLabel] autorelease];
+    CSLinearLayoutItem *horizontalCenterItem = [CSLinearLayoutItem layoutItemForView:horizontalCenterLabel];
     horizontalCenterItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 15.0, 10.0);
     horizontalCenterItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     [_verticalLayoutView addItem:horizontalCenterItem];
@@ -72,7 +72,7 @@
     rightLabel.text = @"Horizontal Right";
     [rightLabel sizeToFit];
     
-    CSLinearLayoutItem *rightItem = [[[CSLinearLayoutItem alloc] initWithView:rightLabel] autorelease];
+    CSLinearLayoutItem *rightItem = [CSLinearLayoutItem layoutItemForView:rightLabel];
     rightItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 0.0, 10.0);
     rightItem.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentRight;
     [_verticalLayoutView addItem:rightItem];
@@ -85,7 +85,7 @@
     horizontalTitleLabel.text = @"Horizontal Layout";
     [horizontalTitleLabel sizeToFit];
     
-    CSLinearLayoutItem *horizontalTitleItem = [[[CSLinearLayoutItem alloc] initWithView:horizontalTitleLabel] autorelease];
+    CSLinearLayoutItem *horizontalTitleItem = [CSLinearLayoutItem layoutItemForView:horizontalTitleLabel];
     horizontalTitleItem.padding = CSLinearLayoutMakePadding(5.0, 10.0, 15.0, 0.0);
     horizontalTitleItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_horizontalLayoutView addItem:horizontalTitleItem];
@@ -96,7 +96,7 @@
     topLabel.text = @"Vertical Top";
     [topLabel sizeToFit];
     
-    CSLinearLayoutItem *topItem = [[[CSLinearLayoutItem alloc] initWithView:topLabel] autorelease];
+    CSLinearLayoutItem *topItem = [CSLinearLayoutItem layoutItemForView:topLabel];
     topItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 15.0, 10.0);
     topItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
     [_horizontalLayoutView addItem:topItem];
@@ -107,7 +107,7 @@
     verticalCenterLabel.text = @"Vertical Center";
     [verticalCenterLabel sizeToFit];
     
-    CSLinearLayoutItem *verticalCenterItem = [[[CSLinearLayoutItem alloc] initWithView:verticalCenterLabel] autorelease];
+    CSLinearLayoutItem *verticalCenterItem = [CSLinearLayoutItem layoutItemForView:verticalCenterLabel];
     verticalCenterItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 15.0, 10.0);
     verticalCenterItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_horizontalLayoutView addItem:verticalCenterItem];
@@ -118,7 +118,7 @@
     bottomLabel.text = @"Vertical Bottom";
     [bottomLabel sizeToFit];
     
-    CSLinearLayoutItem *bottomItem = [[[CSLinearLayoutItem alloc] initWithView:bottomLabel] autorelease];
+    CSLinearLayoutItem *bottomItem = [CSLinearLayoutItem layoutItemForView:bottomLabel];
     bottomItem.padding = CSLinearLayoutMakePadding(15.0, 10.0, 0.0, 10.0);
     bottomItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentBottom;
     [_horizontalLayoutView addItem:bottomItem];

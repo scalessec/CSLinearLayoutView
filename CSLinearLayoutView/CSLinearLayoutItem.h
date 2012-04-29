@@ -43,6 +43,7 @@ typedef struct {
 @property (nonatomic, assign) NSInteger tag;
 
 - (id)initWithView:(UIView *)aView;
++ (CSLinearLayoutItem *)layoutItemForView:(UIView *)aView;
 
 CSLinearLayoutItemPadding CSLinearLayoutMakePadding(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
 

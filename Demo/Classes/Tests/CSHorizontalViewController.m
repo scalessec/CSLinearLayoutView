@@ -30,7 +30,7 @@
     UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRemoveView:)] autorelease];
     [view addGestureRecognizer:tap];
     
-    CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:view] autorelease];
+    CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:view];
     item.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 0.0);
     item.fillMode = CSLinearLayoutItemFillModeStretch;
 
@@ -59,7 +59,7 @@
     CGSize descriptionSize = [descriptionLabel.text sizeWithFont:descriptionLabel.font constrainedToSize:CGSizeMake(70.0, _linearLayoutView.frame.size.height - 20.0)];
     descriptionLabel.frame = CGRectMake(0.0, 0.0, 70.0, descriptionSize.height);
     
-    CSLinearLayoutItem *labelItem = [[[CSLinearLayoutItem alloc] initWithView:descriptionLabel] autorelease];
+    CSLinearLayoutItem *labelItem = [CSLinearLayoutItem layoutItemForView:descriptionLabel];
     labelItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 10.0);
     labelItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_linearLayoutView addItem:labelItem];
@@ -76,7 +76,7 @@
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(handleAddView) forControlEvents:UIControlEventTouchUpInside];
     
-    CSLinearLayoutItem *buttonItem = [[[CSLinearLayoutItem alloc] initWithView:addButton] autorelease];
+    CSLinearLayoutItem *buttonItem = [CSLinearLayoutItem layoutItemForView:addButton];
     buttonItem.padding = CSLinearLayoutMakePadding(10.0, 10.0, 10.0, 20.0);
     buttonItem.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
     [_linearLayoutView addItem:buttonItem];

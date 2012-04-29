@@ -41,6 +41,10 @@
     return self;
 }
 
++ (CSLinearLayoutItem *)layoutItemForView:(UIView *)aView {
+    CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:aView] autorelease];
+    return item;
+}
 
 #pragma mark - Memory Management
 

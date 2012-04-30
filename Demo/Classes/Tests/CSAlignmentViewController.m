@@ -137,6 +137,7 @@
 - (void)dealloc {
     self.verticalLayoutView = nil;
     self.horizontalLayoutView = nil;
+    [super dealloc];
 }
 
 

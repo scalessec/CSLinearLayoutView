@@ -93,6 +93,7 @@
 
 - (void)dealloc {
     self.linearLayoutView = nil;
+    [super dealloc];
 }
 
 

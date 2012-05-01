@@ -1,9 +1,11 @@
 CSLinearLayoutView
 =============
 
-CSLinearLayoutView is designed to simplify relative layouts in iOS. We've all been there before -- you're app needs to display content of varying size, and you want to display views in neat succession. You spend the next few hours pushing pixels, estimating text sizes, and tracking deltas. Lame.
+CSLinearLayoutView is designed to simplify relative layouts on iOS. 
 
-Enter CSLinearLayoutView. Create your layout view, create items from your views, add the items to your layout. Much simpler.
+We've all been there before— the content in your app is dynamic and you need to display different sized views in neat succession. You spend the next hours pushing pixels, estimating text sizes, and tracking deltas. Lame.
+
+Enter CSLinearLayoutView. Create your layout view, create layout items with the views you want to display, and then add the items to your layout. Much simpler.
 
 Example Usage
 ---------
@@ -11,19 +13,17 @@ Example Usage
 	CSLinearLayoutView *linearLayoutView = [[[CSLinearLayoutView alloc] initWithFrame:self.view.bounds] autorelease];
     linearLayoutView.orientation = CSLinearLayoutViewOrientationVertical;
     [self.view addSubview:linearLayoutView];
-
-    // create a view
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 50.0)] autorelease];
-    view.backgroundColor = [UIColor redColor];
     
-    // create a layout item with the view
-     CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:view];
+    // create a layout item for the view you want to display
+    CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:someView];
     item.padding = CSLinearLayoutMakePadding(5.0, 10.0, 5.0, 10.0);
     item.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
     item.fillMode = CSLinearLayoutItemFillModeNormal;
     
     // add the layout item to the linear layout view
     [linearLayoutView addItem:item];
+
+Checkout the demo project for additional tests and examples.
 
 MIT License
 -----------

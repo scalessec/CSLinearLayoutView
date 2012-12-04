@@ -102,7 +102,7 @@
         
         relativePosition += startPadding;
         
-        CGFloat delta = 0.0;
+        CGFloat currentOffset = 0.0;
         if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
             
             CGFloat height = item.view.frame.size.height;
@@ -111,7 +111,7 @@
             }
             
             item.view.frame = CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height);
-            delta = item.view.frame.size.width;
+            currentOffset = item.view.frame.size.width;
             
         } else {
             
@@ -121,20 +121,20 @@
             }
             
             item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
-            delta = item.view.frame.size.height;
+            currentOffset = item.view.frame.size.height;
             
         }
         
-        relativePosition += delta + endPadding;
+        relativePosition += currentOffset + endPadding;
         
     }
     
     if (_autoAdjustContentSize == YES) {
         if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-            CGFloat contentWidth = MAX(self.frame.size.width, self.contentDelta);
+            CGFloat contentWidth = MAX(self.frame.size.width, self.offset);
             self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
         } else {
-            CGFloat contentHeight = MAX(self.frame.size.height, self.contentDelta);
+            CGFloat contentHeight = MAX(self.frame.size.height, self.offset);
             self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
         }
     }
@@ -148,18 +148,18 @@
     [self setNeedsLayout];
 }
 
-- (CGFloat)contentDelta {
-    CGFloat delta = 0.0;
+- (CGFloat)offset {
+    CGFloat currentOffset = 0.0;
     
     for (CSLinearLayoutItem *item in _items) {
         if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
-            delta += item.padding.left + item.view.frame.size.width + item.padding.right;
+            currentOffset += item.padding.left + item.view.frame.size.width + item.padding.right;
         } else {
-            delta += item.padding.top + item.view.frame.size.height + item.padding.bottom;
+            currentOffset += item.padding.top + item.view.frame.size.height + item.padding.bottom;
         }
     }
     
-    return delta;
+    return currentOffset;
 }
 
 

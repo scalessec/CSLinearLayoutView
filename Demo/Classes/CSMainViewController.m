@@ -29,11 +29,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -121,13 +116,6 @@
     }
     
     return cell;
-}
-
-
-#pragma mark - Memory Management
-
-- (void)dealloc {
-    [super dealloc];
 }
 
 @end

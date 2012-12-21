@@ -130,6 +130,7 @@
 }
 
 - (void)viewDidUnload {
+    [super viewDidUnload];
     self.verticalLayoutView = nil;
     self.horizontalLayoutView = nil;
 }

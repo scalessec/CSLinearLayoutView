@@ -1,6 +1,6 @@
 //
 //  UIView+LoadFromNib.m
-//  HackerNews
+//  CSLinearLayoutView
 //
 //  Created by Charles Scalesse on 2/10/12.
 //  Copyright (c) 2012 Charles Scalesse. All rights reserved.

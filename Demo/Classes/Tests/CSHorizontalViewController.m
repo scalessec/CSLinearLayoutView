@@ -88,6 +88,7 @@
 }
 
 - (void)viewDidUnload {
+    [super viewDidUnload];
     self.linearLayoutView = nil;
 }
 

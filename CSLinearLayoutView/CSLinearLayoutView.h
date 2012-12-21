@@ -18,8 +18,9 @@ typedef enum {
 
 @property (nonatomic, readonly) NSMutableArray *items;
 @property (nonatomic, assign) CSLinearLayoutViewOrientation orientation;
-@property (nonatomic, readonly) CGFloat offset;
-@property (nonatomic, assign) BOOL autoAdjustContentSize; // default is YES
+@property (nonatomic, readonly) CGFloat layoutOffset;       // Iterates through the existing layout items and returns the current offset.
+@property (nonatomic, assign) BOOL autoAdjustFrameSize;     // Updates the frame size as items are added/removed. Default is NO.
+@property (nonatomic, assign) BOOL autoAdjustContentSize;   // Updates the contentView as items are added/removed. Default is YES.
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem;
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem;

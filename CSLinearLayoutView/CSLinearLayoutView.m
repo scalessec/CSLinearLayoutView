@@ -8,10 +8,19 @@
 
 #import "CSLinearLayoutView.h"
 
+@interface CSLinearLayoutView()
+
+- (void)setup;
+- (void)adjustFrameSize;
+- (void)adjustContentSize;
+
+@end
+
 @implementation CSLinearLayoutView
 
 @synthesize items = _items;
 @synthesize orientation = _orientation;
+@synthesize autoAdjustFrameSize = _autoAdjustFrameSize;
 @synthesize autoAdjustContentSize = _autoAdjustContentSize;
 
 #pragma mark - Factories
@@ -19,11 +28,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _items = [[NSMutableArray alloc] init];
-        _orientation = CSLinearLayoutViewOrientationVertical;
-        _autoAdjustContentSize = YES;
-        self.autoresizesSubviews = NO;
-        
+        [self setup];
     }
     return self;
 }
@@ -31,10 +36,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _items = [[NSMutableArray alloc] init];
-        _orientation = CSLinearLayoutViewOrientationVertical;
-        _autoAdjustContentSize = YES;
-        self.autoresizesSubviews = NO;
+        [self setup];
     }
     return self;
 }
@@ -42,12 +44,17 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _items = [[NSMutableArray alloc] init];
-        _orientation = CSLinearLayoutViewOrientationVertical;
-        _autoAdjustContentSize = YES;
-        self.autoresizesSubviews = NO;
+        [self setup];
     }
     return self;
+}
+
+- (void)setup {
+    _items = [[NSMutableArray alloc] init];
+    _orientation = CSLinearLayoutViewOrientationVertical;
+    _autoAdjustFrameSize = NO;
+    _autoAdjustContentSize = YES;
+    self.autoresizesSubviews = NO;
 }
 
 
@@ -55,7 +62,6 @@
 
 - (void)dealloc {
     [_items release], _items = nil;
-    
     [super dealloc];
 }
 
@@ -129,26 +135,34 @@
         
     }
     
+    if (_autoAdjustFrameSize == YES) {
+        [self adjustFrameSize];
+    }
+    
     if (_autoAdjustContentSize == YES) {
-        if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-            CGFloat contentWidth = MAX(self.frame.size.width, self.offset);
-            self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
-        } else {
-            CGFloat contentHeight = MAX(self.frame.size.height, self.offset);
-            self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
-        }
+        [self adjustContentSize];
     }
 }
 
-
-#pragma mark - Overrides
-
-- (void)setOrientation:(CSLinearLayoutViewOrientation)anOrientation {
-    _orientation = anOrientation;
-    [self setNeedsLayout];
+- (void)adjustFrameSize {
+    if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.layoutOffset, self.frame.size.height);
+    } else {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.layoutOffset);
+    }
 }
 
-- (CGFloat)offset {
+- (void)adjustContentSize {
+    if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
+        CGFloat contentWidth = MAX(self.frame.size.width, self.layoutOffset);
+        self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
+    } else {
+        CGFloat contentHeight = MAX(self.frame.size.height, self.layoutOffset);
+        self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
+    }
+}
+
+- (CGFloat)layoutOffset {
     CGFloat currentOffset = 0.0;
     
     for (CSLinearLayoutItem *item in _items) {
@@ -160,6 +174,23 @@
     }
     
     return currentOffset;
+}
+
+- (void)setOrientation:(CSLinearLayoutViewOrientation)anOrientation {
+    _orientation = anOrientation;
+    [self setNeedsLayout];
+}
+
+- (void)addSubview:(UIView *)view {
+    [super addSubview:view];
+    
+    if (_autoAdjustFrameSize == YES) {
+        [self adjustFrameSize];
+    }
+    
+    if (_autoAdjustContentSize == YES) {
+        [self adjustContentSize];
+    }
 }
 
 

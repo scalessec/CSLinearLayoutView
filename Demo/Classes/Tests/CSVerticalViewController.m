@@ -109,8 +109,8 @@
     [_linearLayoutView insertItem:item atIndex:index];
     
     // scroll to the bottom, if necessary
-    if (_linearLayoutView.frame.size.height < _linearLayoutView.offset) {
-        CGPoint bottomOffset = CGPointMake(0, _linearLayoutView.offset - _linearLayoutView.frame.size.height);
+    if (_linearLayoutView.frame.size.height < _linearLayoutView.layoutOffset) {
+        CGPoint bottomOffset = CGPointMake(0, _linearLayoutView.layoutOffset - _linearLayoutView.frame.size.height);
         [_linearLayoutView setContentOffset:bottomOffset animated:YES];
     }
 }

@@ -109,8 +109,8 @@
     [_linearLayoutView insertItem:item atIndex:index];
     
     // scroll to the right, if necessary
-    if (_linearLayoutView.frame.size.width < _linearLayoutView.offset) {
-        CGPoint rightOffset = CGPointMake(_linearLayoutView.offset - _linearLayoutView.frame.size.width, 0);
+    if (_linearLayoutView.frame.size.width < _linearLayoutView.layoutOffset) {
+        CGPoint rightOffset = CGPointMake(_linearLayoutView.layoutOffset - _linearLayoutView.frame.size.width, 0);
         [_linearLayoutView setContentOffset:rightOffset animated:YES];
     }
 }

@@ -37,7 +37,6 @@
 - (void)dealloc {
     self.itemText = nil;
     self.itemLabel = nil;
-    
     [super dealloc];
 }
 

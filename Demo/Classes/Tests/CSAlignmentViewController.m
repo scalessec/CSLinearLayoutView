@@ -7,7 +7,7 @@
 //
 
 #import "CSAlignmentViewController.h"
-#import "CSLinearLayoutItem.h"
+#import "CSLinearLayoutView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation CSAlignmentViewController

@@ -21,7 +21,6 @@
 		15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */; };
 		15F8EF82151DACD100C6CEBF /* CSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */; };
 		15F8EF88151DACE100C6CEBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF86151DACE100C6CEBF /* main.m */; };
-		15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */; };
 		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; };
 		15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */; };
 		15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */; };
@@ -58,8 +57,6 @@
 		15F8EF84151DACE100C6CEBF /* CSLinearLayoutViewDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "CSLinearLayoutViewDemo-Info.plist"; path = "Supporting/CSLinearLayoutViewDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		15F8EF85151DACE100C6CEBF /* CSLinearLayoutViewDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CSLinearLayoutViewDemo-Prefix.pch"; path = "Supporting/CSLinearLayoutViewDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		15F8EF86151DACE100C6CEBF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Supporting/main.m; sourceTree = SOURCE_ROOT; };
-		15F8EF8F151DAE5B00C6CEBF /* CSLinearLayoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLinearLayoutItem.h; path = ../CSLinearLayoutView/CSLinearLayoutItem.h; sourceTree = SOURCE_ROOT; };
-		15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutItem.m; path = ../CSLinearLayoutView/CSLinearLayoutItem.m; sourceTree = SOURCE_ROOT; };
 		15F8EF91151DAE5B00C6CEBF /* CSLinearLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLinearLayoutView.h; path = ../CSLinearLayoutView/CSLinearLayoutView.h; sourceTree = SOURCE_ROOT; };
 		15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLinearLayoutView.m; path = ../CSLinearLayoutView/CSLinearLayoutView.m; sourceTree = SOURCE_ROOT; };
 		15F8EFAE151ED34D00C6CEBF /* CSVerticalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSVerticalViewController.h; path = Classes/Tests/CSVerticalViewController.h; sourceTree = SOURCE_ROOT; };
@@ -175,8 +172,6 @@
 			children = (
 				15F8EF91151DAE5B00C6CEBF /* CSLinearLayoutView.h */,
 				15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */,
-				15F8EF8F151DAE5B00C6CEBF /* CSLinearLayoutItem.h */,
-				15F8EF90151DAE5B00C6CEBF /* CSLinearLayoutItem.m */,
 			);
 			name = CSLinearLayoutView;
 			path = CSLinearLayoutViewDemo;
@@ -284,7 +279,6 @@
 				15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */,
 				15F8EF82151DACD100C6CEBF /* CSMainViewController.m in Sources */,
 				15F8EF88151DACE100C6CEBF /* main.m in Sources */,
-				15F8EF93151DAE5B00C6CEBF /* CSLinearLayoutItem.m in Sources */,
 				15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */,
 				15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */,
 				15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */,

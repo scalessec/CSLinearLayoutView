@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CSLinearLayoutView.h"
+
+@class CSLinearLayoutView;
 
 @interface CSOrientationSwitchViewController : UIViewController
 

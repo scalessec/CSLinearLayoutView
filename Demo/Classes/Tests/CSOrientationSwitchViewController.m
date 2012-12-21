@@ -7,7 +7,7 @@
 //
 
 #import "CSOrientationSwitchViewController.h"
-#import "CSLinearLayoutItem.h"
+#import "CSLinearLayoutView.h"
 #import "UIColor+RandomColor.h"
 
 @implementation CSOrientationSwitchViewController

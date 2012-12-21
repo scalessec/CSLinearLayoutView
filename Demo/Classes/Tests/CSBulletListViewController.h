@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Charles Scalesse. All rights reserved.
 //
 
-#import "CSBulletListView.h"
+@class CSBulletListView;
 
 @interface CSBulletListViewController : UIViewController
 

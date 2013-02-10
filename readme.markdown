@@ -1,11 +1,11 @@
 CSLinearLayoutView
 =============
 
-CSLinearLayoutView is designed to simplify relative layouts on iOS. 
+`CSLinearLayoutView` is designed to simplify relative layouts on iOS. 
 
 We've all been there before— the content in your app is dynamic and you need to display different sized views in neat succession. You spend the next hours pushing pixels, estimating text sizes, and tracking deltas. Lame.
 
-Enter CSLinearLayoutView. Create your layout view, create layout items with the views you want to display, and then add the items to your layout. Much simpler.
+Enter `CSLinearLayoutView`. Create your layout view, create layout items with the views you want to display, and then add the items to your layout. Much simpler.
 
 ![CSLinearLayoutView Screenshots](http://i.imgur.com/N7419xg.jpg)
 

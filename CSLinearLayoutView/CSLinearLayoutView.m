@@ -3,7 +3,7 @@
 //  CSLinearLayoutView
 //
 //  Created by Charles Scalesse on 3/24/12.
-//  Copyright (c) 2012 Charles Scalesse. All rights reserved.
+//  Copyright (c) 2013 Charles Scalesse. All rights reserved.
 //
 
 #import "CSLinearLayoutView.h"

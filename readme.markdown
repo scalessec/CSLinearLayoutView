@@ -7,7 +7,7 @@ We've all been there before— the content in your app is dynamic and you need t
 
 Enter CSLinearLayoutView. Create your layout view, create layout items with the views you want to display, and then add the items to your layout. Much simpler.
 
-![CSLinearLayoutView Screenshots](http://i.imgur.com/lob9ia1.jpg)
+![CSLinearLayoutView Screenshots](http://i.imgur.com/N7419xg.jpg)
 
 Example Usage
 ---------

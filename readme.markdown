@@ -27,6 +27,11 @@ Example Usage
 
 Checkout the demo project for additional tests and examples.
 
+Setup Instructions
+------------------
+1. Add `CSLinearLayoutView.h` & `CSLinearLayoutView.m` to your project.
+2. If you're using ARC, you'll need to add the `-fno-objc-arc` compiler flag to `CSLinearLayoutView.m`.
+
 MIT License
 -----------
     Copyright (c) 2013 Charles Scalesse.

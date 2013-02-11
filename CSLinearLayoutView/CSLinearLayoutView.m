@@ -9,8 +9,9 @@
 #import "CSLinearLayoutView.h"
 
 @interface CSLinearLayoutView()
-@property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, readonly) CGSize innerFrameSize;
+@property (nonatomic, strong) NSMutableArray *items; // private setter for items
+@property (nonatomic, readonly) CGSize innerFrameSize; // available space for content without insets
+@property (nonatomic) BOOL contentsDidChange; // saves, if relayout is needed
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -68,7 +69,27 @@
 
 #pragma mark - Layout
 
+- (void)setFrame:(CGRect)frame;
+{
+    [super setFrame: frame];
+    self.contentsDidChange = YES;
+}
+
+- (void)setNeedsLayout;
+{
+    [super setNeedsLayout];
+    self.contentsDidChange = YES;
+}
+
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    // only relayout if explicitly needed
+    // (because layout subviews is called on every contentOffset change)
+    if (!self.contentsDidChange) {
+        return;
+    }
+    self.contentsDidChange = NO;
     
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
@@ -146,9 +167,9 @@
 
 - (void)adjustFrameSize {
     if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.layoutOffset, self.innerFrameSize.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.layoutOffset, self.frame.size.height);
     } else {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.innerFrameSize.width, self.layoutOffset);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.layoutOffset);
     }
 }
 
@@ -196,6 +217,8 @@
     if (self.autoAdjustContentSize == YES) {
         [self adjustContentSize];
     }
+    
+    self.contentsDidChange = YES;
 }
 
 
@@ -217,6 +240,7 @@
     
     [linearLayoutItem.view removeFromSuperview];
     [self.items removeObject:linearLayoutItem];
+    self.contentsDidChange = YES;
 }
 
 - (void)removeAllItems {
@@ -225,6 +249,7 @@
         [item.view removeFromSuperview];
     }
     [self.items removeAllObjects];
+    self.contentsDidChange = YES;
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {

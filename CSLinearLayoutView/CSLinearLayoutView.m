@@ -50,6 +50,19 @@
     self.autoAdjustFrameSize = NO;
     self.autoAdjustContentSize = YES;
     self.autoresizesSubviews = NO;
+    
+    [self restoreDefaultFormats];
+}
+
+- (void)restoreDefaultFormats {
+    // adding shortcut settings
+    self.textColor = [UIColor blackColor];
+	self.defaultFont  = [UIFont systemFontOfSize: 14];
+	self.subtitleFont = [UIFont boldSystemFontOfSize: 14];
+	self.titleFont    = [UIFont boldSystemFontOfSize: 18];
+	self.defaultMargin  = 6;
+	self.subtitleMargin = 20;
+	self.titleMargin    = 15;
 }
 
 
@@ -219,6 +232,7 @@
         return;
     }
     
+    NSUInteger index = [self.items indexOfObject:existingItem];
     [self.items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
@@ -243,6 +257,7 @@
         return;
     }
     
+    [self.items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
 
@@ -302,6 +317,84 @@
     [self.items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
     
     [self setNeedsLayout];
+}
+
+#pragma mark Content Shortcuts
+
+- (CSLinearLayoutItem*)addImageNamed:(NSString*)imageName;
+{
+    UIImage* image = [UIImage imageNamed:imageName];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+    
+    if (image && imageView) {
+        // create layout item
+        CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:imageView];
+        item.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
+        item.verticalAlignment   = CSLinearLayoutItemVerticalAlignmentCenter;
+        [self addItem:item];
+        return item;
+    }
+    
+    return nil;
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text;
+{
+    return [self addText:text font:self.defaultFont];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font;
+{
+    return [self addText:text font:font frontMargin:self.defaultMargin];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text frontMargin:(CGFloat)frontMargin;
+{
+    return [self addText:text font:self.defaultFont frontMargin:frontMargin];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font frontMargin:(CGFloat)frontMargin;
+{
+    BOOL isVertical = (self.orientation == CSLinearLayoutViewOrientationVertical);
+    CGFloat maxSize = self.frame.size.width - self.contentInset.left - self.contentInset.right;
+    if (!isVertical) {
+        maxSize = self.frame.size.height - self.contentInset.top - self.contentInset.bottom;
+    }
+	
+    // create label
+    CGRect frame = CGRectMake(0, 0, isVertical ? maxSize : CGFLOAT_MAX,
+                              !isVertical ? maxSize : CGFLOAT_MAX);
+	UILabel* label = [[UILabel alloc] initWithFrame:frame];
+	label.backgroundColor = [UIColor clearColor];
+	label.textColor = self.textColor;
+	label.font = font;
+	label.text = text;
+	label.numberOfLines = 0;
+    label.lineBreakMode = UILineBreakModeWordWrap;
+	[label sizeToFit];
+    
+    // create layout item
+    CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:label];
+    item.padding = CSLinearLayoutMakePadding(isVertical ? frontMargin : 0,
+                                             !isVertical ? frontMargin : 0,
+                                             0, 0);
+    item.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
+    item.fillMode = CSLinearLayoutItemFillModeStretch;
+    [self addItem:item];
+    
+    return item;
+}
+
+- (CSLinearLayoutItem*)addTitle:(NSString*)text;
+{
+    CGFloat margin = (self.items.count > 0) ? self.titleMargin : 0;
+	return [self addText:text font:self.titleFont frontMargin:margin];
+}
+
+- (CSLinearLayoutItem*)addSubtitle:(NSString*)text;
+{
+    CGFloat margin = (self.items.count > 0) ? self.subtitleMargin : 0;
+	return [self addText:text font:self.subtitleFont frontMargin:margin];
 }
 
 @end

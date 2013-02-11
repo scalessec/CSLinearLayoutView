@@ -9,6 +9,7 @@
 #import "CSLinearLayoutView.h"
 
 @interface CSLinearLayoutView()
+@property (nonatomic, strong) NSMutableArray *items;
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -43,10 +44,10 @@
 }
 
 - (void)setup {
-    _items = [[NSMutableArray alloc] init];
-    _orientation = CSLinearLayoutViewOrientationVertical;
-    _autoAdjustFrameSize = NO;
-    _autoAdjustContentSize = YES;
+    self.items = [[NSMutableArray alloc] init];
+    self.orientation = CSLinearLayoutViewOrientationVertical;
+    self.autoAdjustFrameSize = NO;
+    self.autoAdjustContentSize = YES;
     self.autoresizesSubviews = NO;
 }
 
@@ -58,7 +59,7 @@
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
     
-    for (CSLinearLayoutItem *item in _items) {
+    for (CSLinearLayoutItem *item in self.items) {
         
         CGFloat startPadding = 0.0;
         CGFloat endPadding = 0.0;
@@ -120,11 +121,11 @@
         
     }
     
-    if (_autoAdjustFrameSize == YES) {
+    if (self.autoAdjustFrameSize == YES) {
         [self adjustFrameSize];
     }
     
-    if (_autoAdjustContentSize == YES) {
+    if (self.autoAdjustContentSize == YES) {
         [self adjustContentSize];
     }
 }
@@ -150,8 +151,8 @@
 - (CGFloat)layoutOffset {
     CGFloat currentOffset = 0.0;
     
-    for (CSLinearLayoutItem *item in _items) {
-        if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
+    for (CSLinearLayoutItem *item in self.items) {
+        if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
             currentOffset += item.padding.left + item.view.frame.size.width + item.padding.right;
         } else {
             currentOffset += item.padding.top + item.view.frame.size.height + item.padding.bottom;
@@ -169,11 +170,11 @@
 - (void)addSubview:(UIView *)view {
     [super addSubview:view];
     
-    if (_autoAdjustFrameSize == YES) {
+    if (self.autoAdjustFrameSize == YES) {
         [self adjustFrameSize];
     }
     
-    if (_autoAdjustContentSize == YES) {
+    if (self.autoAdjustContentSize == YES) {
         [self adjustContentSize];
     }
 }
@@ -182,21 +183,21 @@
 #pragma mark - Add, Remove, Insert, & Move
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem {
-    if (linearLayoutItem == nil || [_items containsObject:linearLayoutItem] == YES || linearLayoutItem.view == nil) {
+    if (linearLayoutItem == nil || [self.items containsObject:linearLayoutItem] == YES || linearLayoutItem.view == nil) {
         return;
     }
     
-    [_items addObject:linearLayoutItem];
+    [self.items addObject:linearLayoutItem];
     [self addSubview:linearLayoutItem.view];
 }
 
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem {
-    if (linearLayoutItem == nil || [_items containsObject:linearLayoutItem] == NO) {
+    if (linearLayoutItem == nil || [self.items containsObject:linearLayoutItem] == NO) {
         return;
     }
     
     [linearLayoutItem.view removeFromSuperview];
-    [_items removeObject:linearLayoutItem];
+    [self.items removeObject:linearLayoutItem];
 }
 
 - (void)removeAllItems {
@@ -208,93 +209,91 @@
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {
-    if (newItem == nil || [_items containsObject:newItem] == YES || existingItem == nil ||  [_items containsObject:existingItem] == NO) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || existingItem == nil ||  [self.items containsObject:existingItem] == NO) {
         return;
     }
     
-    NSUInteger index = [_items indexOfObject:existingItem];
-    [_items insertObject:newItem atIndex:index];
+    [self.items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem afterItem:(CSLinearLayoutItem *)existingItem {
-    if (newItem == nil || [_items containsObject:newItem] == YES || existingItem == nil || [_items containsObject:existingItem] == NO) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || existingItem == nil || [self.items containsObject:existingItem] == NO) {
         return;
     }
     
-    if (existingItem == [_items lastObject]) {
-        [_items addObject:newItem];
+    if (existingItem == [self.items lastObject]) {
+        [self.items addObject:newItem];
     } else {
-        NSUInteger index = [_items indexOfObject:existingItem];
-        [_items insertObject:newItem atIndex:++index];
+        NSUInteger index = [self.items indexOfObject:existingItem];
+        [self.items insertObject:newItem atIndex:++index];
     }
     
     [self addSubview:newItem.view];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem atIndex:(NSUInteger)index {
-    if (newItem == nil || [_items containsObject:newItem] == YES || index >= [_items count]) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || index >= [self.items count]) {
         return;
     }
     
-    [_items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem beforeItem:(CSLinearLayoutItem *)existingItem {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || existingItem == nil || [_items containsObject:existingItem] == NO || movingItem == existingItem) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || existingItem == nil || [self.items containsObject:existingItem] == NO || movingItem == existingItem) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
-    [_items insertObject:movingItem atIndex:existingItemIndex];
+    NSUInteger existingItemIndex = [self.items indexOfObject:existingItem];
+    [self.items insertObject:movingItem atIndex:existingItemIndex];
     
     [self setNeedsLayout];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem afterItem:(CSLinearLayoutItem *)existingItem {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || existingItem == nil || [_items containsObject:existingItem] == NO || movingItem == existingItem) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || existingItem == nil || [self.items containsObject:existingItem] == NO || movingItem == existingItem) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    if (existingItem == [_items lastObject]) {
-        [_items addObject:movingItem];
+    if (existingItem == [self.items lastObject]) {
+        [self.items addObject:movingItem];
     } else {
-        NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
-        [_items insertObject:movingItem atIndex:++existingItemIndex];
+        NSUInteger existingItemIndex = [self.items indexOfObject:existingItem];
+        [self.items insertObject:movingItem atIndex:++existingItemIndex];
     }
     
     [self setNeedsLayout];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSUInteger)index {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || index >= [_items count] || [_items indexOfObject:movingItem] == index) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || index >= [self.items count] || [self.items indexOfObject:movingItem] == index) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    if (index == ([_items count] - 1)) {
-        [_items addObject:movingItem];
+    if (index == ([self.items count] - 1)) {
+        [self.items addObject:movingItem];
     } else {
-        [_items insertObject:movingItem atIndex:index];
+        [self.items insertObject:movingItem atIndex:index];
     }
     
     [self setNeedsLayout];
 }
 
 - (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem {
-    if (firstItem == nil || [_items containsObject:firstItem] == NO || secondItem == nil || [_items containsObject:secondItem] == NO || firstItem == secondItem) {
+    if (firstItem == nil || [self.items containsObject:firstItem] == NO || secondItem == nil || [self.items containsObject:secondItem] == NO || firstItem == secondItem) {
         return;
     }
     
-    NSUInteger firstItemIndex = [_items indexOfObject:firstItem];
-    NSUInteger secondItemIndex = [_items indexOfObject:secondItem];
-    [_items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
+    NSUInteger firstItemIndex = [self.items indexOfObject:firstItem];
+    NSUInteger secondItemIndex = [self.items indexOfObject:secondItem];
+    [self.items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
     
     [self setNeedsLayout];
 }

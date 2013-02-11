@@ -10,6 +10,7 @@
 
 @interface CSLinearLayoutView()
 @property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, readonly) CGSize innerFrameSize;
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -72,9 +73,9 @@
             if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentTop || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.top;
             } else if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentBottom) {
-                absolutePosition = self.frame.size.height - item.view.frame.size.height - item.padding.bottom;
+                absolutePosition = self.innerFrameSize.height - item.view.frame.size.height - item.padding.bottom;
             } else { // CSLinearLayoutItemVerticalCenter
-                absolutePosition = (self.frame.size.height / 2) - ((item.view.frame.size.height + (item.padding.bottom - item.padding.top)) / 2);
+                absolutePosition = (self.innerFrameSize.height / 2) - ((item.view.frame.size.height + (item.padding.bottom - item.padding.top)) / 2);
             }
             
         } else {
@@ -85,9 +86,9 @@
             if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentLeft || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.left;
             } else if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentRight) {
-                absolutePosition = self.frame.size.width - item.view.frame.size.width - item.padding.right;
+                absolutePosition = self.innerFrameSize.width - item.view.frame.size.width - item.padding.right;
             } else { // CSLinearLayoutItemHorizontalCenter
-                absolutePosition = (self.frame.size.width / 2) - ((item.view.frame.size.width + (item.padding.right - item.padding.left)) / 2);
+                absolutePosition = (self.innerFrameSize.width / 2) - ((item.view.frame.size.width + (item.padding.right - item.padding.left)) / 2);
             }
             
         }
@@ -99,7 +100,7 @@
             
             CGFloat height = item.view.frame.size.height;
             if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
-                height = self.frame.size.height - (item.padding.top + item.padding.bottom);
+                height = self.innerFrameSize.height - (item.padding.top + item.padding.bottom);
             }
             
             item.view.frame = CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height);
@@ -109,7 +110,7 @@
             
             CGFloat width = item.view.frame.size.width;
             if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
-                width = self.frame.size.width - (item.padding.left + item.padding.right);
+                width = self.innerFrameSize.width - (item.padding.left + item.padding.right);
             }
             
             item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
@@ -132,20 +133,25 @@
 
 - (void)adjustFrameSize {
     if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.layoutOffset, self.frame.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.layoutOffset, self.innerFrameSize.height);
     } else {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.layoutOffset);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.innerFrameSize.width, self.layoutOffset);
     }
 }
 
 - (void)adjustContentSize {
     if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-        CGFloat contentWidth = MAX(self.frame.size.width, self.layoutOffset);
-        self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
+        CGFloat contentWidth = MAX(self.innerFrameSize.width, self.layoutOffset);
+        self.contentSize = CGSizeMake(contentWidth, self.innerFrameSize.height);
     } else {
-        CGFloat contentHeight = MAX(self.frame.size.height, self.layoutOffset);
-        self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
+        CGFloat contentHeight = MAX(self.innerFrameSize.height, self.layoutOffset);
+        self.contentSize = CGSizeMake(self.innerFrameSize.width, contentHeight);
     }
+}
+
+- (CGSize)innerFrameSize {
+    return CGSizeMake(self.frame.size.width - self.contentInset.left - self.contentInset.right,
+                      self.frame.size.height - self.contentInset.top - self.contentInset.bottom);
 }
 
 - (CGFloat)layoutOffset {

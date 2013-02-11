@@ -9,19 +9,12 @@
 #import "CSLinearLayoutView.h"
 
 @interface CSLinearLayoutView()
-
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
-
 @end
 
 @implementation CSLinearLayoutView
-
-@synthesize items = _items;
-@synthesize orientation = _orientation;
-@synthesize autoAdjustFrameSize = _autoAdjustFrameSize;
-@synthesize autoAdjustContentSize = _autoAdjustContentSize;
 
 #pragma mark - Factories
 
@@ -55,14 +48,6 @@
     _autoAdjustFrameSize = NO;
     _autoAdjustContentSize = YES;
     self.autoresizesSubviews = NO;
-}
-
-
-#pragma mark - Lifecycle
-
-- (void)dealloc {
-    [_items release], _items = nil;
-    [super dealloc];
 }
 
 
@@ -210,12 +195,8 @@
         return;
     }
     
-    [linearLayoutItem retain];
-    
-    [_items removeObject:linearLayoutItem];
     [linearLayoutItem.view removeFromSuperview];
-    
-    [linearLayoutItem release];
+    [_items removeObject:linearLayoutItem];
 }
 
 - (void)removeAllItems {
@@ -264,12 +245,10 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
     [_items insertObject:movingItem atIndex:existingItemIndex];
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -279,7 +258,6 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (existingItem == [_items lastObject]) {
@@ -288,7 +266,6 @@
         NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
         [_items insertObject:movingItem atIndex:++existingItemIndex];
     }
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -298,7 +275,6 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (index == ([_items count] - 1)) {
@@ -306,7 +282,6 @@
     } else {
         [_items insertObject:movingItem atIndex:index];
     }
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -328,14 +303,6 @@
 #pragma mark -
 
 @implementation CSLinearLayoutItem
-
-@synthesize view = _view;
-@synthesize fillMode = _fillMode;
-@synthesize horizontalAlignment = _horizontalAlignment;
-@synthesize verticalAlignment = _verticalAlignment;
-@synthesize padding = _padding;
-@synthesize tag = _tag;
-@synthesize userInfo = _userInfo;
 
 #pragma mark - Factories
 
@@ -361,17 +328,8 @@
 }
 
 + (CSLinearLayoutItem *)layoutItemForView:(UIView *)aView {
-    CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:aView] autorelease];
+    CSLinearLayoutItem *item = [[CSLinearLayoutItem alloc] initWithView:aView];
     return item;
-}
-
-#pragma mark - Memory Management
-
-- (void)dealloc {
-    self.view = nil;
-    self.userInfo = nil;
-    
-    [super dealloc];
 }
 
 
@@ -388,3 +346,6 @@ CSLinearLayoutItemPadding CSLinearLayoutMakePadding(CGFloat top, CGFloat left, C
 }
 
 @end
+
+
+

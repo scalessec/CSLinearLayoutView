@@ -68,14 +68,16 @@ typedef enum {
 // configuration
 
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, assign) CGSize shadowOffset;
 
 @property (nonatomic, strong) UIFont *defaultFont;
 @property (nonatomic, strong) UIFont *subtitleFont;
 @property (nonatomic, strong) UIFont *titleFont;
 
-@property (nonatomic, assign) NSUInteger defaultMargin;
-@property (nonatomic, assign) NSUInteger subtitleMargin;
-@property (nonatomic, assign) NSUInteger titleMargin;
+@property (nonatomic, assign) CGFloat defaultMargin;
+@property (nonatomic, assign) CGFloat subtitleMargin;
+@property (nonatomic, assign) CGFloat titleMargin;
 
 // shortcuts
 

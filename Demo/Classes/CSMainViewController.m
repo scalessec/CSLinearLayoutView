@@ -12,6 +12,7 @@
 #import "CSOrientationSwitchViewController.h"
 #import "CSAlignmentViewController.h"
 #import "CSBulletListViewController.h"
+#import "CSShortcutTestViewController.h"
 
 @implementation CSMainViewController
 
@@ -21,6 +22,7 @@
     self = [super init];
     if (self) {
         self.title = @"CSLinearLayoutView";
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     }
     return self;
 }
@@ -66,9 +68,15 @@
             break;
         }
             
+        case 5: {
+            viewController = [[[CSShortcutTestViewController alloc] init] autorelease];
+            break;
+        }
+            
     }
     
     if (viewController != nil) {
+        viewController.title = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
         [self.navigationController pushViewController:viewController animated:YES];
     }
     
@@ -78,7 +86,7 @@
 #pragma mark - UITableView Data Source Methods 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,8 +116,12 @@
             cell.textLabel.text = @"Alignment"; 
             break;
             
-        case 4: 
-            cell.textLabel.text = @"Sample Bullet List"; 
+        case 4:
+            cell.textLabel.text = @"Sample Bullet List";
+            break;
+            
+        case 5:
+            cell.textLabel.text = @"Adding Shortcuts";
             break;
             
     }

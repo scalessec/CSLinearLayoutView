@@ -58,6 +58,8 @@
 - (void)restoreDefaultFormats {
     // adding shortcut settings
     self.textColor = [UIColor blackColor];
+    self.shadowColor = [UIColor clearColor];
+    self.shadowOffset = CGSizeMake(1, 1);
 	self.defaultFont  = [UIFont systemFontOfSize: 14];
 	self.subtitleFont = [UIFont boldSystemFontOfSize: 14];
 	self.titleFont    = [UIFont boldSystemFontOfSize: 18];
@@ -390,8 +392,14 @@
     CGRect frame = CGRectMake(0, 0, isVertical ? maxSize : CGFLOAT_MAX,
                               !isVertical ? maxSize : CGFLOAT_MAX);
 	UILabel* label = [[UILabel alloc] initWithFrame:frame];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    if (!isVertical) {
+        label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+    }
 	label.backgroundColor = [UIColor clearColor];
 	label.textColor = self.textColor;
+    label.shadowColor = self.shadowColor;
+    label.shadowOffset = self.shadowOffset;
 	label.font = font;
 	label.text = text;
 	label.numberOfLines = 0;

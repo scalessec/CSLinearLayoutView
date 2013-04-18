@@ -363,6 +363,7 @@
     self = [super init];
     if (self) {
         self.view = aView;
+        self.tag = aView.tag;
         self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
         self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
         self.fillMode = CSLinearLayoutItemFillModeNormal;

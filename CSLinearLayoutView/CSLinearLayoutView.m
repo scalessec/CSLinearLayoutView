@@ -323,6 +323,16 @@
     [self setNeedsLayout];
 }
 
+- (CSLinearLayoutItem*)findItemByTag:(NSInteger)tag
+{
+    for (CSLinearLayoutItem *item in _items) {
+        if (item.tag == tag) {
+            return item;
+        }
+    }
+    return nil;
+}
+
 @end
 
 #pragma mark -

@@ -58,6 +58,7 @@ typedef enum {
 
 - (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem;
 
+- (CSLinearLayoutItem*)findItemByTag:(NSInteger)tag;
 @end
 
 

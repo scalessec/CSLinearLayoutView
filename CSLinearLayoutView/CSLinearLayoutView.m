@@ -10,6 +10,8 @@
 
 @interface CSLinearLayoutView()
 
+@property (nonatomic, readwrite) NSMutableArray *items;
+
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -22,7 +24,6 @@
 @synthesize orientation = _orientation;
 @synthesize autoAdjustFrameSize = _autoAdjustFrameSize;
 @synthesize autoAdjustContentSize = _autoAdjustContentSize;
-
 #pragma mark - Factories
 
 - (id)init {
@@ -60,7 +61,7 @@
 
 #pragma mark - Lifecycle
 - (void)dealloc {
-    items = nil;
+    self.items = nil;
 }
 
 

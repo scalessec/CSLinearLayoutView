@@ -10,6 +10,8 @@
 
 @interface CSLinearLayoutView()
 
+@property (nonatomic, readwrite) NSMutableArray *items;
+
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -22,7 +24,6 @@
 @synthesize orientation = _orientation;
 @synthesize autoAdjustFrameSize = _autoAdjustFrameSize;
 @synthesize autoAdjustContentSize = _autoAdjustContentSize;
-
 #pragma mark - Factories
 
 - (id)init {
@@ -59,10 +60,8 @@
 
 
 #pragma mark - Lifecycle
-
 - (void)dealloc {
-    [_items release], _items = nil;
-    [super dealloc];
+    self.items = nil;
 }
 
 
@@ -74,6 +73,10 @@
     CGFloat absolutePosition = 0.0;
     
     for (CSLinearLayoutItem *item in _items) {
+        
+        if (item.view.hidden && item.hiddenType == CSLinearLayoutItemGone) {
+            continue;
+        }
         
         CGFloat startPadding = 0.0;
         CGFloat endPadding = 0.0;
@@ -166,6 +169,10 @@
     CGFloat currentOffset = 0.0;
     
     for (CSLinearLayoutItem *item in _items) {
+        if (item.view.hidden && item.hiddenType == CSLinearLayoutItemGone) {
+            continue;
+        }
+        
         if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
             currentOffset += item.padding.left + item.view.frame.size.width + item.padding.right;
         } else {
@@ -210,12 +217,10 @@
         return;
     }
     
-    [linearLayoutItem retain];
     
     [_items removeObject:linearLayoutItem];
     [linearLayoutItem.view removeFromSuperview];
     
-    [linearLayoutItem release];
 }
 
 - (void)removeAllItems {
@@ -264,12 +269,10 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
     [_items insertObject:movingItem atIndex:existingItemIndex];
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -279,7 +282,6 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (existingItem == [_items lastObject]) {
@@ -288,7 +290,6 @@
         NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
         [_items insertObject:movingItem atIndex:++existingItemIndex];
     }
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -298,7 +299,6 @@
         return;
     }
     
-    [movingItem retain];
     [_items removeObject:movingItem];
     
     if (index == ([_items count] - 1)) {
@@ -306,7 +306,6 @@
     } else {
         [_items insertObject:movingItem atIndex:index];
     }
-    [movingItem release];
     
     [self setNeedsLayout];
 }
@@ -321,6 +320,16 @@
     [_items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
     
     [self setNeedsLayout];
+}
+
+- (CSLinearLayoutItem*)findItemByTag:(NSInteger)tag
+{
+    for (CSLinearLayoutItem *item in _items) {
+        if (item.tag == tag) {
+            return item;
+        }
+    }
+    return nil;
 }
 
 @end
@@ -353,6 +362,7 @@
     self = [super init];
     if (self) {
         self.view = aView;
+        self.tag = aView.tag;
         self.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentLeft;
         self.verticalAlignment = CSLinearLayoutItemVerticalAlignmentTop;
         self.fillMode = CSLinearLayoutItemFillModeNormal;
@@ -361,17 +371,15 @@
 }
 
 + (CSLinearLayoutItem *)layoutItemForView:(UIView *)aView {
-    CSLinearLayoutItem *item = [[[CSLinearLayoutItem alloc] initWithView:aView] autorelease];
+    CSLinearLayoutItem *item = [[CSLinearLayoutItem alloc] initWithView:aView];
     return item;
 }
 
 #pragma mark - Memory Management
 
 - (void)dealloc {
-    self.view = nil;
     self.userInfo = nil;
     
-    [super dealloc];
 }
 
 

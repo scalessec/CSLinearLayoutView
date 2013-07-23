@@ -86,12 +86,18 @@ typedef struct {
     CGFloat right;
 } CSLinearLayoutItemPadding;
 
+NS_ENUM(NSInteger, CSLinearLayoutItemVisibility) {
+    CSLinearLayoutItemHidden,             // Occupy the frame
+    CSLinearLayoutItemGone                // Missing in the layout
+};
+
 @interface CSLinearLayoutItem : NSObject
 
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, assign) CSLinearLayoutItemFillMode fillMode;
 @property (nonatomic, assign) CSLinearLayoutItemHorizontalAlignment horizontalAlignment;    // Use horizontalAlignment when the layout view is set to VERTICAL orientation
 @property (nonatomic, assign) CSLinearLayoutItemVerticalAlignment verticalAlignment;        // Use verticalAlignment when the layout view is set to HORIZONTAL orientation
+@property (nonatomic, assign) enum CSLinearLayoutItemVisibility hiddenType;                 // Apply when the layout view is set YES hidden
 @property (nonatomic, assign) CSLinearLayoutItemPadding padding;
 @property (nonatomic, weak) NSDictionary *userInfo;
 @property (nonatomic, assign) NSInteger tag;

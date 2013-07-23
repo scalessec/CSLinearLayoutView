@@ -74,6 +74,10 @@
     
     for (CSLinearLayoutItem *item in _items) {
         
+        if (item.view.hidden && item.hiddenType == CSLinearLayoutItemGone) {
+            continue;
+        }
+        
         CGFloat startPadding = 0.0;
         CGFloat endPadding = 0.0;
         
@@ -165,6 +169,10 @@
     CGFloat currentOffset = 0.0;
     
     for (CSLinearLayoutItem *item in _items) {
+        if (item.view.hidden && item.hiddenType == CSLinearLayoutItemGone) {
+            continue;
+        }
+        
         if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
             currentOffset += item.padding.left + item.view.frame.size.width + item.padding.right;
         } else {

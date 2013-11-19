@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4674D468-F5EA-4AFE-8EC7-94CD840E728B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CSLinearLayoutView</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C4B275BC-CCC3-4B57-A9C6-FC55D4ECA947</key>
+		<string>https://github.com/Dudi00/CSLinearLayoutView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Demo/CSLinearLayoutView.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C4B275BC-CCC3-4B57-A9C6-FC55D4ECA947</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Dudi00/CSLinearLayoutView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C4B275BC-CCC3-4B57-A9C6-FC55D4ECA947</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C4B275BC-CCC3-4B57-A9C6-FC55D4ECA947</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CSLinearLayoutView</string>
+		</dict>
+	</array>
+</dict>
+</plist>

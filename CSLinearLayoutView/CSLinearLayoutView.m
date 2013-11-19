@@ -22,6 +22,7 @@
 @synthesize orientation = _orientation;
 @synthesize autoAdjustFrameSize = _autoAdjustFrameSize;
 @synthesize autoAdjustContentSize = _autoAdjustContentSize;
+@synthesize animationDuration = _animationDuration;
 
 #pragma mark - Factories
 
@@ -126,7 +127,11 @@
                 width = self.frame.size.width - (item.padding.left + item.padding.right);
             }
             
-            item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
+            [UIView animateWithDuration:_animationDuration
+                             animations:^{
+                                 item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
+                             }];
+
             currentOffset = item.view.frame.size.height;
             
         }

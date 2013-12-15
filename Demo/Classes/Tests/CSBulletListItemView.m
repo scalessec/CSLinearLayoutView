@@ -30,7 +30,7 @@
     }
     
     _itemLabel.text = _itemText;
-    CGSize textSize = [_itemLabel.text sizeWithFont:_itemLabel.font constrainedToSize:CGSizeMake(_itemLabel.bounds.size.width, NSIntegerMax) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize textSize = [_itemLabel.text sizeWithFont:_itemLabel.font constrainedToSize:CGSizeMake(_itemLabel.bounds.size.width, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, textSize.height);
 }
 

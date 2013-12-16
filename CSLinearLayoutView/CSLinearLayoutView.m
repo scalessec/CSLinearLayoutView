@@ -200,10 +200,11 @@
 }
 
 - (void)removeAllItems {
-    [_items removeAllObjects];
-    for (UIView *subview in self.subviews) {
-        [subview removeFromSuperview];
+    // only remove actual items, not scrollbars
+    for (CSLinearLayoutItem *item in self.items) {
+        [item.view removeFromSuperview];
     }
+    [self.items removeAllObjects];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {

@@ -20,7 +20,7 @@
         return nil;
     }
     
-    NSMutableArray *sentences = [[[NSMutableArray alloc] initWithArray:[loremText componentsSeparatedByString:@". "]] autorelease];
+    NSMutableArray *sentences = [[NSMutableArray alloc] initWithArray:[loremText componentsSeparatedByString:@". "]];
     if (numberOfSentences >= [sentences count]) {
         return loremText;
     }

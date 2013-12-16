@@ -33,7 +33,7 @@
     _horizontalLayoutView.layer.borderWidth = 1.0f;
     
     // title
-    UILabel *verticalTitleLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *verticalTitleLabel = [[UILabel alloc] init];
     verticalTitleLabel.backgroundColor = [UIColor clearColor];
     verticalTitleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     verticalTitleLabel.text = @"Vertical Layout";
@@ -45,7 +45,7 @@
     [_verticalLayoutView addItem:verticalTitleItem];
     
     // left
-    UILabel *leftLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *leftLabel = [[UILabel alloc] init];
     leftLabel.backgroundColor = [UIColor blueColor];
     leftLabel.text = @"Horizontal Left";
     [leftLabel sizeToFit];
@@ -56,7 +56,7 @@
     [_verticalLayoutView addItem:leftItem];
     
     // horizontal center
-    UILabel *horizontalCenterLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *horizontalCenterLabel = [[UILabel alloc] init];
     horizontalCenterLabel.backgroundColor = [UIColor yellowColor];
     horizontalCenterLabel.text = @"Horizontal Center";
     [horizontalCenterLabel sizeToFit];
@@ -67,7 +67,7 @@
     [_verticalLayoutView addItem:horizontalCenterItem];
     
     // right
-    UILabel *rightLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *rightLabel = [[UILabel alloc] init];
     rightLabel.backgroundColor = [UIColor redColor];
     rightLabel.text = @"Horizontal Right";
     [rightLabel sizeToFit];
@@ -79,7 +79,7 @@
     
     
     // title
-    UILabel *horizontalTitleLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *horizontalTitleLabel = [[UILabel alloc] init];
     horizontalTitleLabel.backgroundColor = [UIColor clearColor];
     horizontalTitleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     horizontalTitleLabel.text = @"Horizontal Layout";
@@ -91,7 +91,7 @@
     [_horizontalLayoutView addItem:horizontalTitleItem];
     
     // top
-    UILabel *topLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *topLabel = [[UILabel alloc] init];
     topLabel.backgroundColor = [UIColor greenColor];
     topLabel.text = @"Vertical Top";
     [topLabel sizeToFit];
@@ -102,7 +102,7 @@
     [_horizontalLayoutView addItem:topItem];
     
     // vertical center
-    UILabel *verticalCenterLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *verticalCenterLabel = [[UILabel alloc] init];
     verticalCenterLabel.backgroundColor = [UIColor orangeColor];
     verticalCenterLabel.text = @"Vertical Center";
     [verticalCenterLabel sizeToFit];
@@ -113,7 +113,7 @@
     [_horizontalLayoutView addItem:verticalCenterItem];
     
     // bottom
-    UILabel *bottomLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *bottomLabel = [[UILabel alloc] init];
     bottomLabel.backgroundColor = [UIColor purpleColor];
     bottomLabel.text = @"Vertical Bottom";
     [bottomLabel sizeToFit];
@@ -134,12 +134,5 @@
     self.verticalLayoutView = nil;
     self.horizontalLayoutView = nil;
 }
-
-- (void)dealloc {
-    self.verticalLayoutView = nil;
-    self.horizontalLayoutView = nil;
-    [super dealloc];
-}
-
 
 @end

@@ -10,6 +10,6 @@
 
 @interface CSBulletListItemView : UIView
 
-@property (nonatomic, retain) NSString *itemText;
+@property (nonatomic, strong) NSString *itemText;
 
 @end

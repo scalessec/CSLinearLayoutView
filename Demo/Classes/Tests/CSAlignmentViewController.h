@@ -12,7 +12,7 @@
 
 @interface CSAlignmentViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet CSLinearLayoutView *verticalLayoutView;
-@property (nonatomic, retain) IBOutlet CSLinearLayoutView *horizontalLayoutView;
+@property (nonatomic, strong) IBOutlet CSLinearLayoutView *verticalLayoutView;
+@property (nonatomic, strong) IBOutlet CSLinearLayoutView *horizontalLayoutView;
 
 @end

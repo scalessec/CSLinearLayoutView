@@ -42,27 +42,27 @@
     switch (indexPath.row) {
             
         case 0: {
-            viewController = [[[CSVerticalViewController alloc] init] autorelease];
+            viewController = [[CSVerticalViewController alloc] init];
             break;
         }
             
         case 1: {
-            viewController = [[[CSHorizontalViewController alloc] init] autorelease];
+            viewController = [[CSHorizontalViewController alloc] init];
             break;
         }
             
         case 2: {
-            viewController = [[[CSOrientationSwitchViewController alloc] init] autorelease];
+            viewController = [[CSOrientationSwitchViewController alloc] init];
             break;
         }
             
         case 3: {
-            viewController = [[[CSAlignmentViewController alloc] init] autorelease];
+            viewController = [[CSAlignmentViewController alloc] init];
             break;
         }
             
         case 4: {
-            viewController = [[[CSBulletListViewController alloc] init] autorelease];
+            viewController = [[CSBulletListViewController alloc] init];
             break;
         }
             
@@ -86,12 +86,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     switch (indexPath.row) {
-            
         case 0: 
             cell.textLabel.text = @"Vertical Layout"; 
             break;
@@ -111,7 +110,6 @@
         case 4: 
             cell.textLabel.text = @"Sample Bullet List"; 
             break;
-            
     }
     
     return cell;

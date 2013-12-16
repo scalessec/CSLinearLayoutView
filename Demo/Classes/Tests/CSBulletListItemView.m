@@ -10,7 +10,7 @@
 
 @interface CSBulletListItemView()
 
-@property (nonatomic, retain) IBOutlet UILabel *itemLabel;
+@property (nonatomic, strong) IBOutlet UILabel *itemLabel;
 
 @end
 
@@ -23,21 +23,12 @@
     _itemLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 }
 
-- (void)setItemText:(NSString *)theItemText {
-    if (_itemText != theItemText) {
-        [_itemText release];
-        _itemText = [theItemText retain];
-    }
+- (void)setItemText:(NSString *)itemText {
+    _itemText = itemText;
     
     _itemLabel.text = _itemText;
     CGSize textSize = [_itemLabel.text sizeWithFont:_itemLabel.font constrainedToSize:CGSizeMake(_itemLabel.bounds.size.width, NSIntegerMax) lineBreakMode:NSLineBreakByWordWrapping];
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, textSize.height);
-}
-
-- (void)dealloc {
-    self.itemText = nil;
-    self.itemLabel = nil;
-    [super dealloc];
 }
 
 @end

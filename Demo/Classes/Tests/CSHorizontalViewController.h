@@ -12,6 +12,6 @@
 
 @interface CSHorizontalViewController : UIViewController
 
-@property (nonatomic, retain) CSLinearLayoutView *linearLayoutView;
+@property (nonatomic, strong) CSLinearLayoutView *linearLayoutView;
 
 @end

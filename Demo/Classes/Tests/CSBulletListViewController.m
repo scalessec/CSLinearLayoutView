@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIBarButtonItem *reloadButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(reload)] autorelease];
+    UIBarButtonItem *reloadButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(reload)];
     self.navigationItem.rightBarButtonItem = reloadButtonItem;
     
     [self reload];
@@ -30,16 +30,10 @@
     self.bulletView = nil;
 }
 
-- (void)dealloc {
-    self.bulletView = nil;
-    [super dealloc];
-}
-
-
 #pragma mark - Events
 
 - (void)reload {
-    NSMutableArray *list = [[[NSMutableArray alloc] initWithCapacity:3] autorelease];
+    NSMutableArray *list = [[NSMutableArray alloc] initWithCapacity:3];
     
     NSInteger numberOfBullets = (arc4random() % 15) + 5;
     

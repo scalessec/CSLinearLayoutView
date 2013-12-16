@@ -12,7 +12,7 @@
 
 @interface CSOrientationSwitchViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet CSLinearLayoutView *linearLayoutView;
+@property (nonatomic, strong) IBOutlet CSLinearLayoutView *linearLayoutView;
 
 - (IBAction)handleSwitchOrientations;
 

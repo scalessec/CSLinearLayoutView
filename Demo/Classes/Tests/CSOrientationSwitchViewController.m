@@ -25,7 +25,7 @@
     
     // add ten views
     for (int i=0; i<10; i++) {
-        UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)] autorelease];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
         view.backgroundColor = [UIColor randomColor];
         
         CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:view];
@@ -44,12 +44,6 @@
     [super viewDidUnload];
     self.linearLayoutView = nil;
 }
-
-- (void)dealloc {
-    self.linearLayoutView = nil;
-    [super dealloc];
-}
-
 
 #pragma mark - Events
 

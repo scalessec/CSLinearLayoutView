@@ -22,11 +22,8 @@
     return self;
 }
 
-- (void)setList:(NSMutableArray *)theList {
-    if (_list != theList) {
-        [_list release];
-        _list = [theList retain];
-    }
+- (void)setList:(NSMutableArray *)list {
+    _list = list;
 
     [self removeAllItems];
     
@@ -41,11 +38,6 @@
         layoutItem.padding = CSLinearLayoutMakePadding(5.0, 0.0, 5.0, 0.0);
         [self addItem:layoutItem];
     }
-}
-
-- (void)dealloc {
-    self.list = nil;
-    [super dealloc];
 }
 
 @end

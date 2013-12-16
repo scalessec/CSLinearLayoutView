@@ -24,10 +24,10 @@
 #pragma mark - Factories
 
 - (CSLinearLayoutItem *)newItem {
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 300.0)] autorelease];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 300.0)];
     view.backgroundColor = [UIColor randomColor];
     
-    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRemoveView:)] autorelease];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleRemoveView:)];
     [view addGestureRecognizer:tap];
     
     CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:view];
@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
     // setup the linear layout
-    self.linearLayoutView = [[[CSLinearLayoutView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.linearLayoutView = [[CSLinearLayoutView alloc] initWithFrame:self.view.bounds];
     self.linearLayoutView.orientation = CSLinearLayoutViewOrientationHorizontal;
     _linearLayoutView.scrollEnabled = YES;
     _linearLayoutView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -51,7 +51,7 @@
     [self.view addSubview:_linearLayoutView];
     
     // add a description label
-    UILabel *descriptionLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *descriptionLabel = [[UILabel alloc] init];
     descriptionLabel.numberOfLines = 0;
     descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
     descriptionLabel.font = [UIFont systemFontOfSize:14.0];
@@ -91,12 +91,6 @@
     [super viewDidUnload];
     self.linearLayoutView = nil;
 }
-
-- (void)dealloc {
-    self.linearLayoutView = nil;
-    [super dealloc];
-}
-
 
 #pragma mark - Events
 

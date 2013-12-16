@@ -10,6 +10,6 @@
 
 @interface CSBulletListView : CSLinearLayoutView
 
-@property (nonatomic, retain) NSMutableArray *list;
+@property (nonatomic, strong) NSMutableArray *list;
 
 @end

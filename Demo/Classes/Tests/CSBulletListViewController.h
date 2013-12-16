@@ -10,7 +10,7 @@
 
 @interface CSBulletListViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet CSBulletListView *bulletView;
+@property (nonatomic, strong) IBOutlet CSBulletListView *bulletView;
 
 - (void)reload;
 

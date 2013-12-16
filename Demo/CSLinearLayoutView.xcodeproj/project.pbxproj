@@ -21,7 +21,7 @@
 		15F8EF81151DACD100C6CEBF /* CSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7D151DACD100C6CEBF /* CSAppDelegate.m */; };
 		15F8EF82151DACD100C6CEBF /* CSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF7F151DACD100C6CEBF /* CSMainViewController.m */; };
 		15F8EF88151DACE100C6CEBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF86151DACE100C6CEBF /* main.m */; };
-		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; };
+		15F8EF94151DAE5B00C6CEBF /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EF92151DAE5B00C6CEBF /* CSLinearLayoutView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		15F8EFB0151ED34D00C6CEBF /* CSVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFAF151ED34D00C6CEBF /* CSVerticalViewController.m */; };
 		15F8EFB9151ED9ED00C6CEBF /* UIColor+RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFB8151ED9ED00C6CEBF /* UIColor+RandomColor.m */; };
 		15F8EFBC151EDF6D00C6CEBF /* CSHorizontalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8EFBB151EDF6D00C6CEBF /* CSHorizontalViewController.m */; };

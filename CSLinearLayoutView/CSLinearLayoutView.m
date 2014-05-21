@@ -101,7 +101,7 @@
                 height = self.frame.size.height - (item.padding.top + item.padding.bottom);
             }
             
-            item.view.frame = CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height);
+            item.view.frame = CGRectIntegral(CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height));
             currentOffset = item.view.frame.size.width;
             
         } else {
@@ -111,7 +111,7 @@
                 width = self.frame.size.width - (item.padding.left + item.padding.right);
             }
             
-            item.view.frame = CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height);
+            item.view.frame = CGRectIntegral(CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height));
             currentOffset = item.view.frame.size.height;
             
         }

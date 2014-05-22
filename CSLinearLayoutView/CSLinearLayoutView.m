@@ -47,6 +47,7 @@
     _orientation = CSLinearLayoutViewOrientationVertical;
     _autoAdjustFrameSize = NO;
     _autoAdjustContentSize = YES;
+    _equallySpaceItems = NO;
     self.autoresizesSubviews = NO;
 }
 
@@ -57,6 +58,26 @@
     
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
+    
+    CGFloat equalSpace = 0.0;
+    if( _equallySpaceItems ) {
+        CGFloat totalSize = 0.0;
+        for (CSLinearLayoutItem *item in _items) {
+            if( self.orientation == CSLinearLayoutViewOrientationHorizontal )
+                totalSize += item.view.frame.size.width;
+            else
+                totalSize += item.view.frame.size.height;
+        }
+        
+        if( self.orientation == CSLinearLayoutViewOrientationHorizontal && totalSize < self.bounds.size.width )
+        {
+            equalSpace = (self.bounds.size.width - totalSize) / (_items.count + 1);
+        }
+        else if( self.orientation == CSLinearLayoutViewOrientationVertical && totalSize < self.bounds.size.height )
+        {
+            equalSpace = (self.bounds.size.height - totalSize) / (_items.count + 1);
+        }
+    }
     
     for (CSLinearLayoutItem *item in _items) {
         
@@ -91,7 +112,10 @@
             
         }
         
-        relativePosition += startPadding;
+        if( _equallySpaceItems && equalSpace > 0.0 )
+            relativePosition += equalSpace;
+        else
+            relativePosition += startPadding;
         
         CGFloat currentOffset = 0.0;
         if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
@@ -116,7 +140,9 @@
             
         }
         
-        relativePosition += currentOffset + endPadding;
+        relativePosition += currentOffset;
+        if( !_equallySpaceItems || equalSpace <= 0.0 )
+            relativePosition += endPadding;
         
     }
     

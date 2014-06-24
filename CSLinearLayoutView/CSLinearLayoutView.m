@@ -9,6 +9,9 @@
 #import "CSLinearLayoutView.h"
 
 @interface CSLinearLayoutView()
+@property (nonatomic, strong) NSMutableArray *items; // private setter for items
+@property (nonatomic, readonly) CGSize innerFrameSize; // available space for content without insets
+@property (nonatomic) BOOL contentsDidChange; // saves, if relayout is needed
 - (void)setup;
 - (void)adjustFrameSize;
 - (void)adjustContentSize;
@@ -43,22 +46,57 @@
 }
 
 - (void)setup {
-    _items = [[NSMutableArray alloc] init];
-    _orientation = CSLinearLayoutViewOrientationVertical;
-    _autoAdjustFrameSize = NO;
-    _autoAdjustContentSize = YES;
+    self.items = [[NSMutableArray alloc] init];
+    self.orientation = CSLinearLayoutViewOrientationVertical;
+    self.autoAdjustFrameSize = NO;
+    self.autoAdjustContentSize = YES;
     self.autoresizesSubviews = NO;
+    
+    [self restoreDefaultFormats];
+}
+
+- (void)restoreDefaultFormats {
+    // adding shortcut settings
+    self.textColor = [UIColor blackColor];
+    self.shadowColor = [UIColor clearColor];
+    self.shadowOffset = CGSizeMake(1, 1);
+	self.defaultFont  = [UIFont systemFontOfSize: 14];
+	self.subtitleFont = [UIFont boldSystemFontOfSize: 14];
+	self.titleFont    = [UIFont boldSystemFontOfSize: 18];
+	self.defaultMargin  = 6;
+	self.subtitleMargin = 20;
+	self.titleMargin    = 15;
 }
 
 
 #pragma mark - Layout
 
+- (void)setFrame:(CGRect)frame;
+{
+    [super setFrame: frame];
+    self.contentsDidChange = YES;
+}
+
+- (void)setNeedsLayout;
+{
+    [super setNeedsLayout];
+    self.contentsDidChange = YES;
+}
+
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    // only relayout if explicitly needed
+    // (because layout subviews is called on every contentOffset change)
+    if (!self.contentsDidChange) {
+        return;
+    }
+    self.contentsDidChange = NO;
     
     CGFloat relativePosition = 0.0;
     CGFloat absolutePosition = 0.0;
     
-    for (CSLinearLayoutItem *item in _items) {
+    for (CSLinearLayoutItem *item in self.items) {
         
         CGFloat startPadding = 0.0;
         CGFloat endPadding = 0.0;
@@ -71,9 +109,9 @@
             if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentTop || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.top;
             } else if (item.verticalAlignment == CSLinearLayoutItemVerticalAlignmentBottom) {
-                absolutePosition = self.frame.size.height - item.view.frame.size.height - item.padding.bottom;
+                absolutePosition = self.innerFrameSize.height - item.view.frame.size.height - item.padding.bottom;
             } else { // CSLinearLayoutItemVerticalCenter
-                absolutePosition = (self.frame.size.height / 2) - ((item.view.frame.size.height + (item.padding.bottom - item.padding.top)) / 2);
+                absolutePosition = (self.innerFrameSize.height / 2) - ((item.view.frame.size.height + (item.padding.bottom - item.padding.top)) / 2);
             }
             
         } else {
@@ -84,9 +122,9 @@
             if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentLeft || item.fillMode == CSLinearLayoutItemFillModeStretch) {
                 absolutePosition = item.padding.left;
             } else if (item.horizontalAlignment == CSLinearLayoutItemHorizontalAlignmentRight) {
-                absolutePosition = self.frame.size.width - item.view.frame.size.width - item.padding.right;
+                absolutePosition = self.innerFrameSize.width - item.view.frame.size.width - item.padding.right;
             } else { // CSLinearLayoutItemHorizontalCenter
-                absolutePosition = (self.frame.size.width / 2) - ((item.view.frame.size.width + (item.padding.right - item.padding.left)) / 2);
+                absolutePosition = (self.innerFrameSize.width / 2) - ((item.view.frame.size.width + (item.padding.right - item.padding.left)) / 2);
             }
             
         }
@@ -98,7 +136,7 @@
             
             CGFloat height = item.view.frame.size.height;
             if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
-                height = self.frame.size.height - (item.padding.top + item.padding.bottom);
+                height = self.innerFrameSize.height - (item.padding.top + item.padding.bottom);
             }
             
             item.view.frame = CGRectIntegral(CGRectMake(relativePosition, absolutePosition, item.view.frame.size.width, height));
@@ -108,7 +146,7 @@
             
             CGFloat width = item.view.frame.size.width;
             if (item.fillMode == CSLinearLayoutItemFillModeStretch) {
-                width = self.frame.size.width - (item.padding.left + item.padding.right);
+                width = self.innerFrameSize.width - (item.padding.left + item.padding.right);
             }
             
             item.view.frame = CGRectIntegral(CGRectMake(absolutePosition, relativePosition, width, item.view.frame.size.height));
@@ -120,11 +158,11 @@
         
     }
     
-    if (_autoAdjustFrameSize == YES) {
+    if (self.autoAdjustFrameSize == YES) {
         [self adjustFrameSize];
     }
     
-    if (_autoAdjustContentSize == YES) {
+    if (self.autoAdjustContentSize == YES) {
         [self adjustContentSize];
     }
 }
@@ -139,19 +177,24 @@
 
 - (void)adjustContentSize {
     if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
-        CGFloat contentWidth = MAX(self.frame.size.width, self.layoutOffset);
-        self.contentSize = CGSizeMake(contentWidth, self.frame.size.height);
+        CGFloat contentWidth = MAX(self.innerFrameSize.width, self.layoutOffset);
+        self.contentSize = CGSizeMake(contentWidth, self.innerFrameSize.height);
     } else {
-        CGFloat contentHeight = MAX(self.frame.size.height, self.layoutOffset);
-        self.contentSize = CGSizeMake(self.frame.size.width, contentHeight);
+        CGFloat contentHeight = MAX(self.innerFrameSize.height, self.layoutOffset);
+        self.contentSize = CGSizeMake(self.innerFrameSize.width, contentHeight);
     }
+}
+
+- (CGSize)innerFrameSize {
+    return CGSizeMake(self.frame.size.width - self.contentInset.left - self.contentInset.right,
+                      self.frame.size.height - self.contentInset.top - self.contentInset.bottom);
 }
 
 - (CGFloat)layoutOffset {
     CGFloat currentOffset = 0.0;
     
-    for (CSLinearLayoutItem *item in _items) {
-        if (_orientation == CSLinearLayoutViewOrientationHorizontal) {
+    for (CSLinearLayoutItem *item in self.items) {
+        if (self.orientation == CSLinearLayoutViewOrientationHorizontal) {
             currentOffset += item.padding.left + item.view.frame.size.width + item.padding.right;
         } else {
             currentOffset += item.padding.top + item.view.frame.size.height + item.padding.bottom;
@@ -169,34 +212,37 @@
 - (void)addSubview:(UIView *)view {
     [super addSubview:view];
     
-    if (_autoAdjustFrameSize == YES) {
+    if (self.autoAdjustFrameSize == YES) {
         [self adjustFrameSize];
     }
     
-    if (_autoAdjustContentSize == YES) {
+    if (self.autoAdjustContentSize == YES) {
         [self adjustContentSize];
     }
+    
+    self.contentsDidChange = YES;
 }
 
 
 #pragma mark - Add, Remove, Insert, & Move
 
 - (void)addItem:(CSLinearLayoutItem *)linearLayoutItem {
-    if (linearLayoutItem == nil || [_items containsObject:linearLayoutItem] == YES || linearLayoutItem.view == nil) {
+    if (linearLayoutItem == nil || [self.items containsObject:linearLayoutItem] == YES || linearLayoutItem.view == nil) {
         return;
     }
     
-    [_items addObject:linearLayoutItem];
+    [self.items addObject:linearLayoutItem];
     [self addSubview:linearLayoutItem.view];
 }
 
 - (void)removeItem:(CSLinearLayoutItem *)linearLayoutItem {
-    if (linearLayoutItem == nil || [_items containsObject:linearLayoutItem] == NO) {
+    if (linearLayoutItem == nil || [self.items containsObject:linearLayoutItem] == NO) {
         return;
     }
     
     [linearLayoutItem.view removeFromSuperview];
-    [_items removeObject:linearLayoutItem];
+    [self.items removeObject:linearLayoutItem];
+    self.contentsDidChange = YES;
 }
 
 - (void)removeAllItems {
@@ -205,98 +251,183 @@
         [item.view removeFromSuperview];
     }
     [self.items removeAllObjects];
+    self.contentsDidChange = YES;
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem beforeItem:(CSLinearLayoutItem *)existingItem {
-    if (newItem == nil || [_items containsObject:newItem] == YES || existingItem == nil ||  [_items containsObject:existingItem] == NO) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || existingItem == nil ||  [self.items containsObject:existingItem] == NO) {
         return;
     }
     
-    NSUInteger index = [_items indexOfObject:existingItem];
-    [_items insertObject:newItem atIndex:index];
+    NSUInteger index = [self.items indexOfObject:existingItem];
+    [self.items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem afterItem:(CSLinearLayoutItem *)existingItem {
-    if (newItem == nil || [_items containsObject:newItem] == YES || existingItem == nil || [_items containsObject:existingItem] == NO) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || existingItem == nil || [self.items containsObject:existingItem] == NO) {
         return;
     }
     
-    if (existingItem == [_items lastObject]) {
-        [_items addObject:newItem];
+    if (existingItem == [self.items lastObject]) {
+        [self.items addObject:newItem];
     } else {
-        NSUInteger index = [_items indexOfObject:existingItem];
-        [_items insertObject:newItem atIndex:++index];
+        NSUInteger index = [self.items indexOfObject:existingItem];
+        [self.items insertObject:newItem atIndex:++index];
     }
     
     [self addSubview:newItem.view];
 }
 
 - (void)insertItem:(CSLinearLayoutItem *)newItem atIndex:(NSUInteger)index {
-    if (newItem == nil || [_items containsObject:newItem] == YES || index >= [_items count]) {
+    if (newItem == nil || [self.items containsObject:newItem] == YES || index >= [self.items count]) {
         return;
     }
     
-    [_items insertObject:newItem atIndex:index];
+    [self.items insertObject:newItem atIndex:index];
     [self addSubview:newItem.view];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem beforeItem:(CSLinearLayoutItem *)existingItem {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || existingItem == nil || [_items containsObject:existingItem] == NO || movingItem == existingItem) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || existingItem == nil || [self.items containsObject:existingItem] == NO || movingItem == existingItem) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
-    [_items insertObject:movingItem atIndex:existingItemIndex];
+    NSUInteger existingItemIndex = [self.items indexOfObject:existingItem];
+    [self.items insertObject:movingItem atIndex:existingItemIndex];
     
     [self setNeedsLayout];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem afterItem:(CSLinearLayoutItem *)existingItem {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || existingItem == nil || [_items containsObject:existingItem] == NO || movingItem == existingItem) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || existingItem == nil || [self.items containsObject:existingItem] == NO || movingItem == existingItem) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    if (existingItem == [_items lastObject]) {
-        [_items addObject:movingItem];
+    if (existingItem == [self.items lastObject]) {
+        [self.items addObject:movingItem];
     } else {
-        NSUInteger existingItemIndex = [_items indexOfObject:existingItem];
-        [_items insertObject:movingItem atIndex:++existingItemIndex];
+        NSUInteger existingItemIndex = [self.items indexOfObject:existingItem];
+        [self.items insertObject:movingItem atIndex:++existingItemIndex];
     }
     
     [self setNeedsLayout];
 }
 
 - (void)moveItem:(CSLinearLayoutItem *)movingItem toIndex:(NSUInteger)index {
-    if (movingItem == nil || [_items containsObject:movingItem] == NO || index >= [_items count] || [_items indexOfObject:movingItem] == index) {
+    if (movingItem == nil || [self.items containsObject:movingItem] == NO || index >= [self.items count] || [self.items indexOfObject:movingItem] == index) {
         return;
     }
     
-    [_items removeObject:movingItem];
+    [self.items removeObject:movingItem];
     
-    if (index == ([_items count] - 1)) {
-        [_items addObject:movingItem];
+    if (index == ([self.items count] - 1)) {
+        [self.items addObject:movingItem];
     } else {
-        [_items insertObject:movingItem atIndex:index];
+        [self.items insertObject:movingItem atIndex:index];
     }
     
     [self setNeedsLayout];
 }
 
 - (void)swapItem:(CSLinearLayoutItem *)firstItem withItem:(CSLinearLayoutItem *)secondItem {
-    if (firstItem == nil || [_items containsObject:firstItem] == NO || secondItem == nil || [_items containsObject:secondItem] == NO || firstItem == secondItem) {
+    if (firstItem == nil || [self.items containsObject:firstItem] == NO || secondItem == nil || [self.items containsObject:secondItem] == NO || firstItem == secondItem) {
         return;
     }
     
-    NSUInteger firstItemIndex = [_items indexOfObject:firstItem];
-    NSUInteger secondItemIndex = [_items indexOfObject:secondItem];
-    [_items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
+    NSUInteger firstItemIndex = [self.items indexOfObject:firstItem];
+    NSUInteger secondItemIndex = [self.items indexOfObject:secondItem];
+    [self.items exchangeObjectAtIndex:firstItemIndex withObjectAtIndex:secondItemIndex];
     
     [self setNeedsLayout];
+}
+
+#pragma mark Content Shortcuts
+
+- (CSLinearLayoutItem*)addImageNamed:(NSString*)imageName;
+{
+    UIImage* image = [UIImage imageNamed:imageName];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+    
+    if (image && imageView) {
+        // create layout item
+        CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:imageView];
+        item.horizontalAlignment = CSLinearLayoutItemHorizontalAlignmentCenter;
+        item.verticalAlignment   = CSLinearLayoutItemVerticalAlignmentCenter;
+        [self addItem:item];
+        return item;
+    }
+    
+    return nil;
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text;
+{
+    return [self addText:text font:self.defaultFont];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font;
+{
+    return [self addText:text font:font frontMargin:self.defaultMargin];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text frontMargin:(CGFloat)frontMargin;
+{
+    return [self addText:text font:self.defaultFont frontMargin:frontMargin];
+}
+
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font frontMargin:(CGFloat)frontMargin;
+{
+    BOOL isVertical = (self.orientation == CSLinearLayoutViewOrientationVertical);
+    CGFloat maxSize = self.frame.size.width - self.contentInset.left - self.contentInset.right;
+    if (!isVertical) {
+        maxSize = self.frame.size.height - self.contentInset.top - self.contentInset.bottom;
+    }
+	
+    // create label
+    CGRect frame = CGRectMake(0, 0, isVertical ? maxSize : CGFLOAT_MAX,
+                              !isVertical ? maxSize : CGFLOAT_MAX);
+	UILabel* label = [[UILabel alloc] initWithFrame:frame];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    if (!isVertical) {
+        label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+    }
+	label.backgroundColor = [UIColor clearColor];
+	label.textColor = self.textColor;
+    label.shadowColor = self.shadowColor;
+    label.shadowOffset = self.shadowOffset;
+	label.font = font;
+	label.text = text;
+	label.numberOfLines = 0;
+    label.lineBreakMode = UILineBreakModeWordWrap;
+	[label sizeToFit];
+    
+    // create layout item
+    CSLinearLayoutItem *item = [CSLinearLayoutItem layoutItemForView:label];
+    item.padding = CSLinearLayoutMakePadding(isVertical ? frontMargin : 0,
+                                             !isVertical ? frontMargin : 0,
+                                             0, 0);
+    item.verticalAlignment = CSLinearLayoutItemVerticalAlignmentCenter;
+    item.fillMode = CSLinearLayoutItemFillModeStretch;
+    [self addItem:item];
+    
+    return item;
+}
+
+- (CSLinearLayoutItem*)addTitle:(NSString*)text;
+{
+    CGFloat margin = (self.items.count > 0) ? self.titleMargin : 0;
+	return [self addText:text font:self.titleFont frontMargin:margin];
+}
+
+- (CSLinearLayoutItem*)addSubtitle:(NSString*)text;
+{
+    CGFloat margin = (self.items.count > 0) ? self.subtitleMargin : 0;
+	return [self addText:text font:self.subtitleFont frontMargin:margin];
 }
 
 @end

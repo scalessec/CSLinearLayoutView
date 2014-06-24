@@ -60,6 +60,42 @@ typedef enum {
 
 @end
 
+/*
+ * Shortcuts, to easily add slightly formatted text & images
+ */
+@interface CSLinearLayoutView ()
+
+// configuration
+
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, assign) CGSize shadowOffset;
+
+@property (nonatomic, strong) UIFont *defaultFont;
+@property (nonatomic, strong) UIFont *subtitleFont;
+@property (nonatomic, strong) UIFont *titleFont;
+
+@property (nonatomic, assign) CGFloat defaultMargin;
+@property (nonatomic, assign) CGFloat subtitleMargin;
+@property (nonatomic, assign) CGFloat titleMargin;
+
+// shortcuts
+
+- (CSLinearLayoutItem*)addImageNamed:(NSString*)imageName;
+
+- (CSLinearLayoutItem*)addText:(NSString*)text;
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font;
+- (CSLinearLayoutItem*)addText:(NSString*)text frontMargin:(CGFloat)frontMargin;
+- (CSLinearLayoutItem*)addText:(NSString*)text font:(UIFont*)font frontMargin:(CGFloat)frontMargin;
+
+- (CSLinearLayoutItem*)addTitle:(NSString*)text;
+- (CSLinearLayoutItem*)addSubtitle:(NSString*)text;
+
+// restoring
+- (void)restoreDefaultFormats;
+
+@end
+
 
 typedef enum {
     CSLinearLayoutItemFillModeNormal,   // Respects the view's frame size
